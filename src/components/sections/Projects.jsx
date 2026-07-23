@@ -1,8 +1,24 @@
 import projects from "../../data/projects";
 
-import workflowImg from "../../assets/projects/gcash-buyload-workflow.png";
-import telegramImg from "../../assets/projects/gcash-buyload-telegram.png";
-import sheetImg from "../../assets/projects/gcash-buyload-sheet.png";
+// AI Chatbot
+import chatbotWorkflow from "../../assets/projects/ai-chatbot-jieunshideout/ai-chatbot-jieunshideout-workflow.png";
+import chatbotMessenger from "../../assets/projects/ai-chatbot-jieunshideout/ai-chatbot-jieunshideout-messenger.png";
+import chatbotKnowledgebase from "../../assets/projects/ai-chatbot-jieunshideout/ai-chatbot-jieunshideout-knowledgebase.png";
+
+// GCash Buy Load
+import workflowImg from "../../assets/projects/gcash-buyload/gcash-buyload-workflow.png";
+import telegramImg from "../../assets/projects/gcash-buyload/gcash-buyload-telegram.png";
+import sheetImg from "../../assets/projects/gcash-buyload/gcash-buyload-sheet.png";
+
+const imageLibrary = {
+  workflow: workflowImg,
+  telegram: telegramImg,
+  sheet: sheetImg,
+
+  "chatbot-workflow": chatbotWorkflow,
+  "chatbot-facebook": chatbotMessenger,
+  "chatbot-conversation": chatbotKnowledgebase,
+};
 
 function Projects() {
   return (
@@ -17,14 +33,14 @@ function Projects() {
         </h2>
 
         <p className="text-slate-400 mb-16 max-w-3xl">
-          Real-world infrastructure deployments and workflow automation
-          solutions built for businesses and clients.
+          A collection of real-world automation systems, enterprise IT
+          deployments, and network infrastructure projects delivered for
+          businesses and private clients.
         </p>
 
         <div className="space-y-12">
 
           {projects.map((project) =>
-
             project.featured ? (
 
               <div
@@ -34,15 +50,23 @@ function Projects() {
 
                 <div className="grid lg:grid-cols-2">
 
-                  {/* LEFT */}
+                  {/* LEFT IMAGE */}
 
-                  <img
-                    src={workflowImg}
-                    alt="Workflow"
-                    className="w-full h-full object-cover"
-                  />
+                  <div className="bg-slate-900">
 
-                  {/* RIGHT */}
+                    {project.images?.length > 0 && (
+
+                      <img
+                        src={imageLibrary[project.images[0]]}
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                      />
+
+                    )}
+
+                  </div>
+
+                  {/* RIGHT CONTENT */}
 
                   <div className="p-10 flex flex-col justify-center">
 
@@ -66,33 +90,34 @@ function Projects() {
                       {project.description}
                     </p>
 
-                    {/* Metrics */}
+                    {/* METRICS */}
 
-                    <div className="grid grid-cols-2 gap-4 mt-8">
+                    {project.metrics && (
+                      <div className="grid grid-cols-2 gap-4 mt-8">
 
-                      <div className="bg-slate-900 rounded-xl p-5">
-                        <p className="text-3xl font-bold text-blue-400">
-                          100%
-                        </p>
+                        {project.metrics.map((metric) => (
 
-                        <p className="text-slate-400 text-sm mt-1">
-                          Automated Workflow
-                        </p>
+                          <div
+                            key={metric.label}
+                            className="bg-slate-900 rounded-xl p-5"
+                          >
+
+                            <p className="text-3xl font-bold text-blue-400">
+                              {metric.value}
+                            </p>
+
+                            <p className="text-slate-400 text-sm mt-1">
+                              {metric.label}
+                            </p>
+
+                          </div>
+
+                        ))}
+
                       </div>
+                    )}
 
-                      <div className="bg-slate-900 rounded-xl p-5">
-                        <p className="text-3xl font-bold text-blue-400">
-                          OCR + AI
-                        </p>
-
-                        <p className="text-slate-400 text-sm mt-1">
-                          Data Processing
-                        </p>
-                      </div>
-
-                    </div>
-
-                    {/* Technologies */}
+                    {/* TECHNOLOGIES */}
 
                     <div className="flex flex-wrap gap-3 mt-8">
 
@@ -109,7 +134,7 @@ function Projects() {
 
                     </div>
 
-                    {/* Achievements */}
+                    {/* ACHIEVEMENTS */}
 
                     <div className="mt-10">
 
@@ -134,47 +159,30 @@ function Projects() {
 
                     </div>
 
-                    {/* Buttons */}
-
-                    <div className="flex flex-wrap gap-4 mt-10">
-
-                      <button className="bg-blue-600 hover:bg-blue-700 px-5 py-3 rounded-lg font-semibold transition">
-                        View Workflow
-                      </button>
-
-                      <button className="border border-slate-600 hover:border-white px-5 py-3 rounded-lg transition">
-                        View Screenshots
-                      </button>
-
-                    </div>
-
                   </div>
 
                 </div>
 
-                {/* Gallery */}
+                {/* IMAGE GALLERY */}
 
-                <div className="grid md:grid-cols-3 gap-6 p-8 border-t border-slate-800">
+                {project.images?.length > 1 && (
 
-                  <img
-                    src={workflowImg}
-                    alt="Workflow"
-                    className="rounded-xl border border-slate-700 hover:scale-105 transition duration-300 cursor-pointer"
-                  />
+                  <div className="grid md:grid-cols-3 gap-6 p-8 border-t border-slate-800">
 
-                  <img
-                    src={telegramImg}
-                    alt="Telegram"
-                    className="rounded-xl border border-slate-700 hover:scale-105 transition duration-300 cursor-pointer"
-                  />
+                    {project.images.map((image) => (
 
-                  <img
-                    src={sheetImg}
-                    alt="Google Sheet"
-                    className="rounded-xl border border-slate-700 hover:scale-105 transition duration-300 cursor-pointer"
-                  />
+                      <img
+                        key={image}
+                        src={imageLibrary[image]}
+                        alt={project.title}
+                        className="rounded-xl border border-slate-700 cursor-pointer transition duration-300 hover:scale-105 hover:border-blue-500"
+                      />
 
-                </div>
+                    ))}
+
+                  </div>
+
+                )}
 
               </div>
 

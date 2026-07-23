@@ -1,6 +1,62 @@
 const projects = [
   {
     id: 1,
+
+    featured: true,
+
+    title: "AI Customer Support Chatbot for Pisonet Business",
+
+    client: "Ji Eun's Hideout Pisonet & Computer Shop",
+
+    role: "AI Automation Engineer",
+
+    description:
+  "Designed and developed an AI-powered customer support chatbot using n8n and Google Gemini. The chatbot integrates with Facebook Messenger, retrieves business information from a Google Docs knowledge base, automatically detects the customer's language, answers pricing and frequently asked questions, and provides instant 24/7 support without human intervention.",
+
+    metrics: [
+  {
+    value: "24/7",
+    label: "AI Customer Support",
+  },
+  {
+    value: "Multi-Language",
+    label: "English & Filipino",
+  },
+],
+
+    technologies: [
+  "n8n",
+  "Google Gemini",
+  "Facebook Messenger",
+  "AI Agent",
+  "Google Docs",
+  "Knowledge Base",
+  "Webhook",
+  "HTTP Requests",
+  "JSON",
+  "Prompt Engineering",
+],
+
+    achievements: [
+  "Designed an AI-powered customer support workflow",
+  "Integrated Facebook Messenger with n8n",
+  "Built a Google Docs knowledge base",
+  "Implemented automatic language detection",
+  "Engineered context-aware AI prompts",
+  "Automated customer FAQs and pricing inquiries",
+  "Reduced manual customer support workload",
+],
+
+    images: [
+      "chatbot-workflow",
+      "chatbot-facebook",
+      "chatbot-conversation",
+    ],
+  },
+
+  {
+    id: 2,
+
     featured: true,
 
     title: "GCash Buy Load Automation",
@@ -11,6 +67,17 @@ const projects = [
 
     description:
       "Built an end-to-end workflow automation using n8n that validates licenses, accepts Telegram image uploads, extracts GPS coordinates through OCR, converts them into readable addresses using AI, logs transactions into Google Sheets, and sends automated confirmations.",
+
+    metrics: [
+  {
+    value: "End-to-End",
+    label: "Workflow Automation",
+  },
+  {
+    value: "OCR + AI",
+    label: "Address Extraction",
+  },
+],
 
     technologies: [
       "n8n",
@@ -41,7 +108,7 @@ const projects = [
   },
 
   {
-    id: 2,
+    id: 3,
 
     featured: false,
 
@@ -77,7 +144,7 @@ const projects = [
   },
 
   {
-    id: 3,
+    id: 4,
 
     featured: false,
 
@@ -88,7 +155,7 @@ const projects = [
     role: "Network Infrastructure Engineer",
 
     description:
-      "Designed and deployed the school's network infrastructure by planning cable routes, implementing a dual ISP setup with load balancing, installing structured cabling, unmanaged switches, and wireless access points. Continue providing ongoing maintenance and technical support.",
+      "Designed and deployed the school's network infrastructure by planning cable routes, implementing a dual ISP setup with load balancing, installing structured cabling, unmanaged switches, and wireless access points. Currently provides ongoing maintenance and technical support.",
 
     technologies: [
       "Dual ISP",
@@ -114,7 +181,7 @@ const projects = [
   },
 
   {
-    id: 4,
+    id: 5,
 
     featured: false,
 
