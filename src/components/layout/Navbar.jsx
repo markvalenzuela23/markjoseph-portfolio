@@ -57,6 +57,15 @@ function Navbar() {
   </a>
 </li>
 
+<li>
+  <a
+    href="/resume.pdf"
+    className="hover:text-blue-400 transition"
+  >
+    Resume
+  </a>
+</li>
+
         </ul>
 
       </div>

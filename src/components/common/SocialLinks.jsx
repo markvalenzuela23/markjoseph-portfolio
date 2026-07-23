@@ -1,3 +1,4 @@
+import profile from "../../data/profile";
 import {
   FaGithub,
   FaLinkedin,
@@ -7,34 +8,37 @@ import {
 
 function SocialLinks() {
   return (
-    <div className="flex gap-5 mt-10 text-3xl">
+    <div className="flex gap-6 text-3xl text-slate-400">
 
       <a
-        href="https://github.com/markvalenzuela23"
+        href={profile.social.github}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-slate-400 hover:text-blue-400 transition"
+        className="hover:text-white transition"
       >
         <FaGithub />
       </a>
 
       <a
-        href="#"
-        className="text-slate-400 hover:text-blue-400 transition"
+        href={profile.social.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:text-[#0A66C2] transition"
       >
         <FaLinkedin />
       </a>
 
       <a
-        href="mailto:YOUR_EMAIL"
-        className="text-slate-400 hover:text-blue-400 transition"
+        href={profile.social.email}
+        className="hover:text-red-400 transition"
       >
         <FaEnvelope />
       </a>
 
       <a
         href="/resume.pdf"
-        className="text-slate-400 hover:text-blue-400 transition"
+        download
+        className="hover:text-blue-400 transition"
       >
         <FaFileDownload />
       </a>
