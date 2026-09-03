@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { FaCode, FaDownload } from "react-icons/fa";
 import projects from "../../data/projects";
 import SectionHeading from "../common/SectionHeading";
 
@@ -98,6 +99,40 @@ function Lightbox({ image, onClose }) {
       >
         ×
       </button>
+    </div>
+  );
+}
+
+// Renders the "see the actual workflow" links, but only for projects that
+// declare a sanitised export. Screenshots show that a workflow exists; the
+// JSON lets someone verify how it was built.
+function ProjectLinks({ project }) {
+  if (!project.workflowFile) return null;
+
+  const href = `${import.meta.env.BASE_URL}workflows/${project.workflowFile}`;
+
+  return (
+    <div className="flex flex-wrap gap-3 mt-8">
+
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 rounded-lg border border-slate-700 px-4 py-2.5 text-sm font-medium hover:border-blue-500 hover:text-blue-400 transition"
+      >
+        <FaCode aria-hidden="true" />
+        View workflow JSON
+      </a>
+
+      <a
+        href={href}
+        download
+        className="inline-flex items-center gap-2 rounded-lg border border-slate-700 px-4 py-2.5 text-sm font-medium hover:border-blue-500 hover:text-blue-400 transition"
+      >
+        <FaDownload aria-hidden="true" />
+        Download
+      </a>
+
     </div>
   );
 }
@@ -227,6 +262,10 @@ function Projects() {
                       ))}
 
                     </div>
+
+                    {/* WORKFLOW SOURCE */}
+
+                    <ProjectLinks project={project} />
 
                     {/* ACHIEVEMENTS */}
 

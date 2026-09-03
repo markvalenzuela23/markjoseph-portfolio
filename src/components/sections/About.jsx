@@ -1,5 +1,12 @@
 import SectionHeading from "../common/SectionHeading";
 
+const stats = [
+  { value: "7+", label: "Years Professional Experience" },
+  { value: "4+", label: "Years in IT & Automation" },
+  { value: "$1,860", label: "Annual Hosting Cost Removed" },
+  { value: "Zero", label: "Downtime on Production Migration" },
+];
+
 function About() {
   return (
     <section
@@ -44,55 +51,30 @@ function About() {
 
           {/* RIGHT */}
 
+          {/* Every figure here is defensible in an interview. The previous
+              tiles ("2 Active Clients", "24/7 Support Mindset") were a small
+              number and a slogan dressed as a metric. */}
+
           <div className="grid grid-cols-2 gap-6">
 
-            <div className="bg-slate-950 rounded-2xl p-8 border border-slate-800">
+            {stats.map((stat) => (
 
-              <h3 className="text-5xl font-bold text-blue-400">
-                3+
-              </h3>
+              <div
+                key={stat.label}
+                className="bg-slate-950 rounded-2xl p-8 border border-slate-800"
+              >
 
-              <p className="mt-3 text-slate-300">
-                Years Experience
-              </p>
+                <h3 className="text-4xl lg:text-5xl font-bold text-blue-400">
+                  {stat.value}
+                </h3>
 
-            </div>
+                <p className="mt-3 text-slate-300">
+                  {stat.label}
+                </p>
 
-            <div className="bg-slate-950 rounded-2xl p-8 border border-slate-800">
+              </div>
 
-              <h3 className="text-5xl font-bold text-blue-400">
-                2
-              </h3>
-
-              <p className="mt-3 text-slate-300">
-                Active Clients
-              </p>
-
-            </div>
-
-            <div className="bg-slate-950 rounded-2xl p-8 border border-slate-800">
-
-              <h3 className="text-5xl font-bold text-blue-400">
-                4+
-              </h3>
-
-              <p className="mt-3 text-slate-300">
-                Enterprise Projects
-              </p>
-
-            </div>
-
-            <div className="bg-slate-950 rounded-2xl p-8 border border-slate-800">
-
-              <h3 className="text-5xl font-bold text-blue-400">
-                24/7
-              </h3>
-
-              <p className="mt-3 text-slate-300">
-                Support Mindset
-              </p>
-
-            </div>
+            ))}
 
           </div>
 

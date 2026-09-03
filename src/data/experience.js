@@ -51,7 +51,7 @@ const experience = [
 
     position: "IT Infrastructure Consultant",
 
-    duration: "2026 – Present",
+    duration: "2026 – Present · On-call",
 
     description:
       "Designed, implemented and currently maintain the school's complete network infrastructure supporting administrators, faculty and students.",
@@ -74,7 +74,7 @@ const experience = [
 
     position: "IT Consultant",
 
-    duration: "2026 – Present",
+    duration: "2026 – Present · On-call",
 
     description:
       "Provides on-call technical support, computer maintenance, and network administration for business operations.",
