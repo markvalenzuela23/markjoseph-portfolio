@@ -1,26 +1,111 @@
+import { useCallback, useEffect, useState } from "react";
 import projects from "../../data/projects";
 
 // AI Chatbot
-import chatbotWorkflow from "../../assets/projects/ai-chatbot-jieunshideout/ai-chatbot-jieunshideout-workflow.png";
-import chatbotMessenger from "../../assets/projects/ai-chatbot-jieunshideout/ai-chatbot-jieunshideout-messenger.png";
-import chatbotKnowledgebase from "../../assets/projects/ai-chatbot-jieunshideout/ai-chatbot-jieunshideout-knowledgebase.png";
+import chatbotWorkflow from "../../assets/projects/ai-chatbot-jieunshideout/ai-chatbot-jieunshideout-workflow.webp";
+import chatbotMessenger from "../../assets/projects/ai-chatbot-jieunshideout/ai-chatbot-jieunshideout-messenger.webp";
+import chatbotKnowledgebase from "../../assets/projects/ai-chatbot-jieunshideout/ai-chatbot-jieunshideout-knowledgebase.webp";
 
 // GCash Buy Load
-import workflowImg from "../../assets/projects/gcash-buyload/gcash-buyload-workflow.png";
-import telegramImg from "../../assets/projects/gcash-buyload/gcash-buyload-telegram.png";
-import sheetImg from "../../assets/projects/gcash-buyload/gcash-buyload-sheet.png";
+import workflowImg from "../../assets/projects/gcash-buyload/gcash-buyload-workflow.webp";
+import telegramImg from "../../assets/projects/gcash-buyload/gcash-buyload-telegram.webp";
+import sheetImg from "../../assets/projects/gcash-buyload/gcash-buyload-sheet.webp";
 
+// Intrinsic dimensions are declared so the browser can reserve space before an
+// image loads, which stops the gallery from shifting the page as it fills in.
 const imageLibrary = {
-  workflow: workflowImg,
-  telegram: telegramImg,
-  sheet: sheetImg,
+  workflow: {
+    src: workflowImg,
+    width: 1600,
+    height: 585,
+    alt: "n8n workflow canvas for the GCash buy load automation",
+  },
+  telegram: {
+    src: telegramImg,
+    width: 691,
+    height: 1011,
+    alt: "Telegram bot confirming a completed load transaction",
+  },
+  sheet: {
+    src: sheetImg,
+    width: 1600,
+    height: 797,
+    alt: "Google Sheets transaction log populated automatically by the workflow",
+  },
 
-  "chatbot-workflow": chatbotWorkflow,
-  "chatbot-facebook": chatbotMessenger,
-  "chatbot-conversation": chatbotKnowledgebase,
+  "chatbot-workflow": {
+    src: chatbotWorkflow,
+    width: 1600,
+    height: 650,
+    alt: "n8n workflow canvas for the AI customer support chatbot",
+  },
+  "chatbot-facebook": {
+    src: chatbotMessenger,
+    width: 1193,
+    height: 887,
+    alt: "The chatbot answering a customer inside Facebook Messenger",
+  },
+  "chatbot-conversation": {
+    src: chatbotKnowledgebase,
+    width: 1600,
+    height: 761,
+    alt: "Google Docs knowledge base the chatbot reads its answers from",
+  },
 };
 
+function Lightbox({ image, onClose }) {
+  useEffect(() => {
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") onClose();
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={image.alt}
+      onClick={onClose}
+      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-slate-950/95 backdrop-blur-sm p-6 cursor-zoom-out"
+    >
+      <img
+        src={image.src}
+        alt={image.alt}
+        width={image.width}
+        height={image.height}
+        onClick={(event) => event.stopPropagation()}
+        className="max-h-[85vh] w-auto max-w-full rounded-xl border border-slate-700 object-contain cursor-default"
+      />
+
+      <p className="mt-4 max-w-2xl text-center text-sm text-slate-400">
+        {image.alt}
+      </p>
+
+      <button
+        type="button"
+        onClick={onClose}
+        aria-label="Close image"
+        className="absolute top-6 right-6 text-4xl leading-none text-slate-400 hover:text-white transition"
+      >
+        ×
+      </button>
+    </div>
+  );
+}
+
 function Projects() {
+  const [lightboxImage, setLightboxImage] = useState(null);
+
+  const closeLightbox = useCallback(() => setLightboxImage(null), []);
+
   return (
     <section
       id="projects"
@@ -29,42 +114,51 @@ function Projects() {
       <div className="max-w-7xl mx-auto px-8">
 
         <h2 className="text-4xl font-bold mb-4">
-          Featured Professional Projects
+          Featured Automations &amp; Projects
         </h2>
 
         <p className="text-slate-400 mb-16 max-w-3xl">
-          A collection of real-world automation systems, enterprise IT
-          deployments, and network infrastructure projects delivered for
-          businesses and private clients.
+          Real workflow automations and AI integrations built for live
+          businesses, alongside the infrastructure projects behind them.
+          Click any screenshot to view it full size.
         </p>
 
         <div className="space-y-12">
 
-          {projects.map((project) =>
-            project.featured ? (
+          {projects.map((project) => {
+            const cover = project.images?.length
+              ? imageLibrary[project.images[0]]
+              : null;
+
+            return project.featured ? (
 
               <div
                 key={project.id}
                 className="bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300"
               >
 
-                <div className="grid lg:grid-cols-2">
+                {/* Featured projects without screenshots run full width rather
+                    than leaving half the card empty. */}
+                <div className={cover ? "grid lg:grid-cols-2" : ""}>
 
                   {/* LEFT IMAGE */}
 
-                  <div className="bg-slate-900">
-
-                    {project.images?.length > 0 && (
+                  {cover && (
+                    <div className="bg-slate-900">
 
                       <img
-                        src={imageLibrary[project.images[0]]}
-                        alt={project.title}
-                        className="w-full h-full object-cover"
+                        src={cover.src}
+                        alt={cover.alt}
+                        width={cover.width}
+                        height={cover.height}
+                        loading="lazy"
+                        decoding="async"
+                        onClick={() => setLightboxImage(cover)}
+                        className="w-full h-full object-cover cursor-zoom-in"
                       />
 
-                    )}
-
-                  </div>
+                    </div>
+                  )}
 
                   {/* RIGHT CONTENT */}
 
@@ -169,16 +263,28 @@ function Projects() {
 
                   <div className="grid md:grid-cols-3 gap-6 p-8 border-t border-slate-800">
 
-                    {project.images.map((image) => (
+                    {project.images.map((key) => {
+                      const image = imageLibrary[key];
 
-                      <img
-                        key={image}
-                        src={imageLibrary[image]}
-                        alt={project.title}
-                        className="rounded-xl border border-slate-700 cursor-pointer transition duration-300 hover:scale-105 hover:border-blue-500"
-                      />
-
-                    ))}
+                      return (
+                        <button
+                          key={key}
+                          type="button"
+                          onClick={() => setLightboxImage(image)}
+                          className="rounded-xl overflow-hidden border border-slate-700 cursor-zoom-in transition duration-300 hover:scale-105 hover:border-blue-500"
+                        >
+                          <img
+                            src={image.src}
+                            alt={image.alt}
+                            width={image.width}
+                            height={image.height}
+                            loading="lazy"
+                            decoding="async"
+                            className="w-full h-full object-cover"
+                          />
+                        </button>
+                      );
+                    })}
 
                   </div>
 
@@ -249,13 +355,20 @@ function Projects() {
 
               </div>
 
-            )
-
-          )}
+            );
+          })}
 
         </div>
 
       </div>
+
+      {lightboxImage && (
+        <Lightbox
+          image={lightboxImage}
+          onClose={closeLightbox}
+        />
+      )}
+
     </section>
   );
 }

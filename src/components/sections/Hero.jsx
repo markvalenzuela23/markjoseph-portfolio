@@ -1,35 +1,37 @@
 import { useEffect, useState } from "react";
 import profile from "../../data/profile";
-import profileImage from "../../assets/images/profile.jpg";
+import profileImage from "../../assets/images/profile.webp";
 import SocialLinks from "../common/SocialLinks";
 
 import {
   FaServer,
-  FaNetworkWired,
-  FaTools,
+  FaCode,
+  FaBrain,
   FaRobot,
 } from "react-icons/fa";
 
+// Automation and AI lead; the infrastructure work sits behind them as the
+// track record that makes the automations credible.
 const expertise = [
+  {
+    icon: FaRobot,
+    title: "Workflow Automation",
+    items: ["n8n", "Telegram & Messenger", "Google Sheets"],
+  },
+  {
+    icon: FaBrain,
+    title: "AI Integration",
+    items: ["OpenAI API", "Google Gemini", "Prompt Engineering"],
+  },
+  {
+    icon: FaCode,
+    title: "AI-Assisted Development",
+    items: ["Claude Code", "React & Node.js", "Test-backed delivery"],
+  },
   {
     icon: FaServer,
     title: "Enterprise IT",
     items: ["Windows Server", "VMware ESXi", "Active Directory"],
-  },
-  {
-    icon: FaRobot,
-    title: "Workflow Automation",
-    items: ["n8n", "OpenAI API", "Telegram Bot"],
-  },
-  {
-    icon: FaNetworkWired,
-    title: "Network Infrastructure",
-    items: ["Dual ISP", "FortiGate", "Structured Cabling"],
-  },
-  {
-    icon: FaTools,
-    title: "Technical Support",
-    items: ["Windows Support", "Remote Assistance", "Troubleshooting"],
   },
 ];
 
@@ -189,19 +191,12 @@ function Hero() {
 
                 </div>
 
-                {/* Name */}
+                {/* Location — the name and headline already lead the left
+                    column, so the card only carries what they don't. */}
 
                 <div className="text-center mt-8">
 
-                  <h3 className="text-3xl font-bold">
-                    {profile.name}
-                  </h3>
-
-                  <p className="text-blue-400 mt-2 font-semibold">
-                    {profile.headline[0]}
-                  </p>
-
-                  <p className="text-slate-400 text-sm mt-1">
+                  <p className="text-slate-400 text-sm">
                     📍 {profile.location}
                   </p>
 

@@ -1,5 +1,111 @@
 const projects = [
   {
+    id: 6,
+
+    featured: true,
+
+    title: "Transaction Management Module — Yapii",
+
+    client: "Homexa · Yapii (AI real estate SaaS)",
+
+    role: "AI-Assisted Development · Product Delivery",
+
+    description:
+      "Rebuilt a brokerage's transaction management inside Yapii, their AI SaaS platform, to replace the third-party tool they were paying for. Delivered task management, a trigger-based automation engine, reporting dashboards, and inbound email-to-listing matching — built by directing six Claude Code sessions running in parallel, each in an isolated git worktree and scratch database, coordinated into a single reviewable pull request.",
+
+    metrics: [
+      {
+        value: "6",
+        label: "Parallel Claude Code sessions",
+      },
+      {
+        value: "101",
+        label: "Tests added to untested code",
+      },
+    ],
+
+    technologies: [
+      "Claude Code",
+      "AI Coding Agents",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "Drizzle ORM",
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "Git Worktrees",
+      "Docker Swarm",
+    ],
+
+    achievements: [
+      "Rebuilt task management to feature parity",
+      "Built a transaction trigger and automation engine",
+      "Automated intake from live web forms",
+      "Matched inbound email to the correct listing",
+      "Added 101 tests to previously untestable code",
+      "Traced 236 test failures to ~5 root causes",
+      "Enforced read-only access to external systems",
+      "Ran the full suite after every merge, shipped as one PR",
+    ],
+
+    images: [],
+  },
+
+  {
+    id: 7,
+
+    featured: true,
+
+    title: "Platform Migration — Render to Self-Hosted VPS with Dokploy",
+
+    client: "Homexa · Yapii (AI real estate SaaS)",
+
+    role: "Infrastructure Engineer",
+
+    description:
+      "Moved a production SaaS platform off Render onto a self-managed Hostinger KVM 8 VPS, cutting hosting cost by roughly 86% with zero downtime. Provisioned the server from scratch and stood up Dokploy — a self-hosted, Docker-based PaaS — as the Render replacement, so the team kept push-to-deploy without the managed-host bill. Evaluated managed Postgres and rejected it on cost, containerised a build that had never successfully run, and rehearsed the full database cutover before repointing the domain.",
+
+    metrics: [
+      {
+        value: "~$1,860",
+        label: "Saved per year on hosting",
+      },
+      {
+        value: "Zero",
+        label: "Downtime during cutover",
+      },
+    ],
+
+    technologies: [
+      "Dokploy",
+      "Hostinger KVM 8",
+      "Docker Swarm",
+      "PostgreSQL",
+      "Linux VPS",
+      "pg_dump",
+      "rclone",
+      "DNS / DMARC",
+      "Node.js",
+    ],
+
+    achievements: [
+      "Provisioned a Hostinger KVM 8 VPS from scratch",
+      "Deployed Dokploy as a self-hosted Render alternative",
+      "Cut hosting from $181 to $25.64 per month",
+      "Completed cutover with zero downtime",
+      "Rehearsed a 7.2 GB restore down to 51 seconds",
+      "Fixed a Dockerfile that had never built successfully",
+      "Ended recurring hourly crashes by raising the heap limit",
+      "Replaced a paid backup add-on with scripted offsite dumps",
+      "Corrected DMARC, CNAME and email reply-path faults",
+      "Verified workspace data isolation end to end",
+    ],
+
+    images: [],
+  },
+
+  {
     id: 1,
 
     featured: true,
@@ -11,7 +117,7 @@ const projects = [
     role: "AI Automation Engineer",
 
     description:
-  "Designed and developed an AI-powered customer support chatbot using n8n and Google Gemini. The chatbot integrates with Facebook Messenger, retrieves business information from a Google Docs knowledge base, automatically detects the customer's language, answers pricing and frequently asked questions, and provides instant 24/7 support without human intervention.",
+  "Designed and developed an AI-powered customer support chatbot for a pisonet shop — a Philippine coin-operated internet and gaming kiosk — using n8n and Google Gemini. The chatbot integrates with Facebook Messenger, retrieves business information from a Google Docs knowledge base, automatically detects the customer's language, answers pricing and frequently asked questions, and provides instant 24/7 support without human intervention.",
 
     metrics: [
   {
@@ -66,7 +172,7 @@ const projects = [
     role: "Workflow Automation Engineer",
 
     description:
-      "Built an end-to-end workflow automation using n8n that validates licenses, accepts Telegram image uploads, extracts GPS coordinates through OCR, converts them into readable addresses using AI, logs transactions into Google Sheets, and sends automated confirmations.",
+      "Built an end-to-end workflow automation for a reseller of GCash, the Philippines' largest mobile wallet. The n8n workflow validates licenses, accepts Telegram image uploads, extracts GPS coordinates through OCR, converts them into readable addresses using AI, logs transactions into Google Sheets, and sends automated confirmations.",
 
     metrics: [
   {

@@ -110,6 +110,30 @@ const experience = [
       "License Validation System",
     ],
   },
+
+  {
+    id: 6,
+
+    company: "Homexa",
+
+    position: "Technical Virtual Assistant — Product Development",
+
+    duration: "August – September 2026",
+
+    description:
+      "Worked on Yapii, the company's AI-powered SaaS platform for real estate agents (Node.js, PostgreSQL, React). Delivered a transaction management module by directing Claude Code sessions in parallel, then migrated the platform off Render onto a self-provisioned Hostinger KVM 8 VPS running Dokploy, with zero downtime.",
+
+    achievements: [
+      "Rebuilt transaction management to match the incumbent tool",
+      "Built a transaction trigger and automation engine",
+      "Directed 6 parallel Claude Code sessions to delivery",
+      "Added 101 tests to previously untestable code",
+      "Traced 236 test failures to ~5 root causes",
+      "Provisioned a Hostinger KVM 8 VPS running Dokploy",
+      "Migrated off Render with zero downtime, saving ~$1,860/year",
+      "Hardened destructive write paths against external systems",
+    ],
+  },
 ];
 
 export default experience;

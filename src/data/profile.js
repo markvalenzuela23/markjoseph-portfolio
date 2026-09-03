@@ -2,24 +2,24 @@ const profile = {
   name: "Mark Joseph Valenzuela",
 
   headline: [
+    "AI Automation Engineer",
+    "AI-Assisted Developer",
+    "n8n + LLM Workflows",
     "System Administrator",
-    "Technical Support Specialist",
-    "Workflow Automation (n8n)",
-    "Network Infrastructure",
   ],
 
   location: "Quezon City, Philippines",
 
   shortDescription:
-    "Enterprise IT professional specializing in System Administration, Technical Support, Network Infrastructure, and Workflow Automation. Experienced in Windows Server, VMware, Active Directory, FortiGate, TrueNAS, Synology, and n8n automation with OpenAI and Telegram integrations.",
+    "I build AI automations and ship software by directing Claude Code. n8n workflows wired into LLMs, Telegram and Messenger for live businesses — and a production SaaS module delivered by coordinating six parallel Claude Code sessions. I run what I build too: I moved that platform off Render onto a self-provisioned VPS running Dokploy, with zero downtime.",
 
   quickSkills: [
-    "VMware",
-    "Windows Server",
-    "FortiGate",
     "n8n",
-    "Networking",
-    "Active Directory",
+    "OpenAI API",
+    "Google Gemini",
+    "Claude Code",
+    "React",
+    "Dokploy",
   ],
 
   social: {
@@ -35,7 +35,7 @@ const profile = {
   resumeUrl: `${import.meta.env.BASE_URL}resume.pdf`,
 
   buttons: {
-    projects: "View Projects",
+    projects: "View Automations",
     resume: "Download Resume",
   },
 };

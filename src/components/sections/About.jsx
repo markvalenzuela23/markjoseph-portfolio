@@ -17,26 +17,28 @@ function About() {
             </p>
 
             <h2 className="text-5xl font-bold mt-4">
-              Building Reliable IT Infrastructure &
-              Automation Solutions
+              Automating the Work People
+              Shouldn't Be Doing by Hand
             </h2>
 
             <p className="mt-8 text-slate-400 leading-8">
 
-              I'm an IT professional specializing in enterprise system
-              administration, network infrastructure, workflow automation,
-              and technical support. I enjoy solving complex technical
-              challenges and creating reliable solutions that improve
-              business operations.
+              I build workflow automations that take repetitive manual
+              processes off people's plates — n8n workflows wired into
+              LLMs, Telegram, Facebook Messenger, OCR, and Google Sheets.
+              The chatbot and transaction pipelines below are running in
+              live businesses today, not demos.
 
             </p>
 
             <p className="mt-6 text-slate-400 leading-8">
 
-              Throughout my career, I've deployed Windows Server
-              environments, VMware virtualization, Active Directory,
-              FortiGate firewalls, backup solutions, structured cabling,
-              and automated workflows using n8n, OpenAI, and Telegram.
+              That work sits on top of an infrastructure background:
+              Windows Server, VMware virtualization, Active Directory,
+              FortiGate firewalls, backup systems, and structured cabling.
+              It's the reason the things I automate keep running after
+              handover instead of breaking the first time something
+              upstream changes.
 
             </p>
 
