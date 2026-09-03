@@ -88,7 +88,7 @@ function Hero() {
 
                 <div
                   key={title}
-                  className="rounded-xl border border-slate-800 bg-slate-900/70 p-5 hover:border-blue-500 hover:-translate-y-1 transition-all"
+                  className="rounded-xl border border-slate-800 bg-slate-900/70 p-5"
                 >
 
                   <Icon className="text-3xl text-blue-400" />
@@ -210,7 +210,7 @@ function Hero() {
 
                     <div
                       key={skill}
-                      className="rounded-lg border border-slate-700 bg-slate-800/70 p-3 text-center text-sm font-medium hover:border-blue-500 transition"
+                      className="rounded-lg border border-slate-700 bg-slate-800/70 p-3 text-center text-sm font-medium"
                     >
                       {skill}
                     </div>

@@ -4,6 +4,14 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Keyboard users get a visible ring on anything focusable. Without this the
+   only feedback is the browser default, which is invisible on a dark ground. */
+:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 /* Floating */
 
 @keyframes floating {
@@ -54,4 +62,20 @@ html {
 
 .animate-spin-reverse {
   animation: spinReverse 18s linear infinite;
+}
+
+/* The floating photo and the pulsing status dot are decorative, so they stop
+   for anyone who has asked the OS to reduce motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

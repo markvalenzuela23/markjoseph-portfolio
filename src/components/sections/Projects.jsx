@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import projects from "../../data/projects";
+import SectionHeading from "../common/SectionHeading";
 
 // AI Chatbot
 import chatbotWorkflow from "../../assets/projects/ai-chatbot-jieunshideout/ai-chatbot-jieunshideout-workflow.webp";
@@ -109,21 +110,20 @@ function Projects() {
   return (
     <section
       id="projects"
-      className="bg-slate-900 text-white py-28 scroll-mt-24"
+      className="bg-slate-900 text-white py-32 md:py-40 scroll-mt-24"
     >
       <div className="max-w-7xl mx-auto px-8">
 
-        <h2 className="text-4xl font-bold mb-4">
-          Featured Automations &amp; Projects
-        </h2>
+        <SectionHeading
+          eyebrow="Selected Work"
+          title="Automations, Products & Infrastructure"
+        >
+          Real automations and AI integrations built for live businesses,
+          alongside the platform and infrastructure work behind them. Click any
+          screenshot to view it full size.
+        </SectionHeading>
 
-        <p className="text-slate-400 mb-16 max-w-3xl">
-          Real workflow automations and AI integrations built for live
-          businesses, alongside the infrastructure projects behind them.
-          Click any screenshot to view it full size.
-        </p>
-
-        <div className="space-y-12">
+        <div className="space-y-12 mt-16">
 
           {projects.map((project) => {
             const cover = project.images?.length
@@ -134,7 +134,7 @@ function Projects() {
 
               <div
                 key={project.id}
-                className="bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300"
+                className="bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden"
               >
 
                 {/* Featured projects without screenshots run full width rather
@@ -164,15 +164,15 @@ function Projects() {
 
                   <div className="p-10 flex flex-col justify-center">
 
-                    <span className="w-fit bg-blue-600 px-5 py-2 rounded-full text-sm font-semibold">
-                      ⭐ Featured Project
+                    <span className="w-fit bg-slate-800 text-slate-300 px-3 py-1.5 rounded-md text-xs uppercase tracking-[0.15em] font-semibold">
+                      Featured
                     </span>
 
-                    <h3 className="text-4xl font-bold mt-6">
+                    <h3 className="text-2xl md:text-3xl font-bold mt-6">
                       {project.title}
                     </h3>
 
-                    <p className="text-blue-400 mt-3 text-lg">
+                    <p className="text-slate-300 mt-3 text-lg">
                       {project.role}
                     </p>
 
@@ -213,13 +213,13 @@ function Projects() {
 
                     {/* TECHNOLOGIES */}
 
-                    <div className="flex flex-wrap gap-3 mt-8">
+                    <div className="flex flex-wrap gap-2 mt-8">
 
                       {project.technologies.map((tech) => (
 
                         <span
                           key={tech}
-                          className="bg-slate-800 px-4 py-2 rounded-full text-sm"
+                          className="bg-slate-800/70 text-slate-300 px-3 py-1.5 rounded-md text-[13px]"
                         >
                           {tech}
                         </span>
@@ -296,14 +296,14 @@ function Projects() {
 
               <div
                 key={project.id}
-                className="bg-slate-950 border border-slate-800 rounded-2xl p-8 hover:border-blue-500 hover:-translate-y-2 transition-all duration-300"
+                className="bg-slate-950 border border-slate-800 rounded-2xl p-8"
               >
 
                 <h3 className="text-2xl font-bold">
                   {project.title}
                 </h3>
 
-                <p className="text-blue-400 mt-2">
+                <p className="text-slate-300 mt-2">
                   {project.role}
                 </p>
 
@@ -315,13 +315,13 @@ function Projects() {
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-3 mt-8">
+                <div className="flex flex-wrap gap-2 mt-8">
 
                   {project.technologies.map((tech) => (
 
                     <span
                       key={tech}
-                      className="bg-slate-800 px-4 py-2 rounded-full text-sm"
+                      className="bg-slate-800/70 text-slate-300 px-3 py-1.5 rounded-md text-[13px]"
                     >
                       {tech}
                     </span>

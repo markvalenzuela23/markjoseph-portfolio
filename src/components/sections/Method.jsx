@@ -1,3 +1,4 @@
+import SectionHeading from "../common/SectionHeading";
 import {
   FaImage,
   FaCodeBranch,
@@ -48,33 +49,28 @@ function Method() {
     >
       <div className="max-w-7xl mx-auto px-8">
 
-        <p className="uppercase tracking-[0.3em] text-blue-400 font-semibold">
-          How I Work
-        </p>
-
-        <h2 className="text-4xl font-bold mt-4 mb-4">
-          AI-Assisted Development, With Receipts
-        </h2>
-
-        <p className="text-slate-400 mb-16 max-w-3xl leading-8">
+        <SectionHeading
+          eyebrow="How I Work"
+          title="AI-Assisted Development, With Receipts"
+        >
           I build with Claude Code, directed conversationally rather than from
           written specs — most recently six sessions in parallel to ship a
           production SaaS module. That only works with discipline attached.
           These are the rules I hold the work to, learned on production systems
           where a green test suite and an invisible feature turned out to be
           entirely compatible.
-        </p>
+        </SectionHeading>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
 
           {principles.map(({ icon: Icon, title, body }) => (
 
             <div
               key={title}
-              className="bg-slate-900 rounded-2xl p-8 border border-slate-800 hover:border-blue-500 transition"
+              className="bg-slate-900 rounded-2xl p-8 border border-slate-800"
             >
 
-              <Icon className="text-3xl text-blue-400" />
+              <Icon className="text-2xl text-slate-400" />
 
               <h3 className="text-xl font-bold mt-5">
                 {title}

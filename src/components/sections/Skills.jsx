@@ -1,3 +1,5 @@
+import SectionHeading from "../common/SectionHeading";
+
 // Ordered by what the portfolio leads with: AI automation and AI-assisted
 // development first, then the infrastructure skills that support them.
 //
@@ -104,32 +106,31 @@ function Skills() {
     >
       <div className="max-w-7xl mx-auto px-8">
 
-        <h2 className="text-4xl font-bold mb-4">
-          Skills
-        </h2>
-
-        <p className="text-slate-400 mb-16 max-w-2xl">
+        <SectionHeading eyebrow="Toolkit" title="Skills">
           The stack I use to automate manual work, ship software with AI coding
           agents, and run the servers underneath it all.
-        </p>
+        </SectionHeading>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
 
           {skillGroups.map((group) => (
             <div
               key={group.title}
-              className="bg-slate-900 rounded-2xl p-8 border border-slate-800 hover:border-blue-500 transition"
+              className="bg-slate-900 rounded-2xl p-8 border border-slate-800"
             >
-              <h3 className="text-xl font-bold text-blue-400 mb-6">
+              <h3 className="text-lg font-semibold mb-6">
                 {group.title}
               </h3>
 
-              <div className="flex flex-wrap gap-3">
+              {/* Flat, squared chips rather than pills — there are ~120 of
+                  these across the page, and pill styling made them read as
+                  buttons rather than as a list. */}
+              <div className="flex flex-wrap gap-2">
 
                 {group.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="bg-slate-800 px-4 py-2 rounded-full text-sm"
+                    className="bg-slate-800/70 text-slate-300 px-3 py-1.5 rounded-md text-[13px]"
                   >
                     {skill}
                   </span>
@@ -144,12 +145,12 @@ function Skills() {
                     Some exposure
                   </p>
 
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-2">
 
                     {group.secondary.map((skill) => (
                       <span
                         key={skill}
-                        className="border border-slate-700 text-slate-400 px-4 py-2 rounded-full text-sm"
+                        className="border border-slate-700 text-slate-400 px-3 py-1.5 rounded-md text-[13px]"
                       >
                         {skill}
                       </span>

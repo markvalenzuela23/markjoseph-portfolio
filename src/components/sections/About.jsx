@@ -1,3 +1,5 @@
+import SectionHeading from "../common/SectionHeading";
+
 function About() {
   return (
     <section
@@ -12,14 +14,10 @@ function About() {
 
           <div>
 
-            <p className="uppercase tracking-[0.3em] text-blue-400 font-semibold">
-              About Me
-            </p>
-
-            <h2 className="text-5xl font-bold mt-4">
-              Automating the Work People
-              Shouldn't Be Doing by Hand
-            </h2>
+            <SectionHeading
+              eyebrow="About Me"
+              title="Automating the Work People Shouldn't Be Doing by Hand"
+            />
 
             <p className="mt-8 text-slate-400 leading-8">
 
