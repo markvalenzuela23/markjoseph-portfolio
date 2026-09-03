@@ -15,8 +15,8 @@ const profile = {
 
   quickSkills: [
     "n8n",
-    "OpenAI API",
-    "Google Gemini",
+    "LangChain Agents",
+    "OpenRouter",
     "Claude Code",
     "React",
     "Dokploy",

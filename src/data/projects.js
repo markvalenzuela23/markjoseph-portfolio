@@ -117,40 +117,39 @@ const projects = [
     role: "AI Automation Engineer",
 
     description:
-  "Designed and developed an AI-powered customer support chatbot for a pisonet shop — a Philippine coin-operated internet and gaming kiosk — using n8n and Google Gemini. The chatbot integrates with Facebook Messenger, retrieves business information from a Google Docs knowledge base, automatically detects the customer's language, answers pricing and frequently asked questions, and provides instant 24/7 support without human intervention.",
+  "Designed and developed an AI-powered customer support chatbot for a pisonet shop — a Philippine coin-operated internet and gaming kiosk — using n8n's LangChain agent with an OpenRouter model. It handles the Messenger webhook verification handshake, pulls business information from a Google Docs knowledge base, keeps conversation context in a window buffer memory, detects whether the customer is writing English or Filipino, and is constrained by prompt to answer only from the knowledge base rather than inventing prices or promos.",
 
     metrics: [
   {
     value: "24/7",
-    label: "AI Customer Support",
+    label: "Unattended customer support",
   },
   {
-    value: "Multi-Language",
-    label: "English & Filipino",
+    value: "EN / FIL",
+    label: "Automatic language detection",
   },
 ],
 
     technologies: [
   "n8n",
-  "Google Gemini",
-  "Facebook Messenger",
-  "AI Agent",
+  "LangChain AI Agent",
+  "OpenRouter",
+  "Facebook Graph API",
   "Google Docs",
-  "Knowledge Base",
-  "Webhook",
-  "HTTP Requests",
-  "JSON",
+  "Window Buffer Memory",
+  "Webhook Verification",
   "Prompt Engineering",
 ],
 
     achievements: [
-  "Designed an AI-powered customer support workflow",
-  "Integrated Facebook Messenger with n8n",
-  "Built a Google Docs knowledge base",
-  "Implemented automatic language detection",
-  "Engineered context-aware AI prompts",
-  "Automated customer FAQs and pricing inquiries",
-  "Reduced manual customer support workload",
+  "Handled the Messenger webhook verification handshake",
+  "Routed verification and message traffic down separate branches",
+  "Built a Google Docs knowledge base as the single source of truth",
+  "Constrained the agent to refuse rather than invent prices or promos",
+  "Automatic English / Filipino language detection",
+  "Window buffer memory for follow-up questions in a conversation",
+  "Filtered non-text events before they reach the model",
+  "Automated customer FAQs and pricing enquiries",
 ],
 
     images: [
@@ -172,38 +171,39 @@ const projects = [
     role: "Workflow Automation Engineer",
 
     description:
-      "Built an end-to-end workflow automation for a reseller of GCash, the Philippines' largest mobile wallet. The n8n workflow validates licenses, accepts Telegram image uploads, extracts GPS coordinates through OCR, converts them into readable addresses using AI, logs transactions into Google Sheets, and sends automated confirmations.",
+      "Built an end-to-end workflow automation for a reseller of GCash, the Philippines' largest mobile wallet. A Telegram bot gates access behind a licence-code login bound to one chat ID, OCRs the coordinates stamped on each installation photo, checks they fall inside the Philippines, reverse-geocodes them through OpenStreetMap, and refuses the submission when the detected location contradicts the city the installer typed. Valid entries are filed to Google Drive and appended to Google Sheets with a confirmation back to the installer.",
 
     metrics: [
   {
-    value: "End-to-End",
-    label: "Workflow Automation",
+    value: "3 layers",
+    label: "Licence, geofence and city-match checks",
   },
   {
-    value: "OCR + AI",
-    label: "Address Extraction",
+    value: "OCR + Geo",
+    label: "Location verified, not just recorded",
   },
 ],
 
     technologies: [
       "n8n",
-      "OpenAI API",
       "Telegram Bot API",
+      "OCR.space API",
+      "Nominatim / OpenStreetMap",
       "Google Sheets",
-      "OCR",
-      "GPS Metadata Extraction",
-      "Reverse Geocoding",
-      "Webhooks",
+      "Google Drive",
+      "JavaScript (Code nodes)",
+      "Geofencing",
     ],
 
     achievements: [
-      "License validation",
-      "Telegram Bot automation",
-      "OCR processing",
-      "GPS coordinate extraction",
-      "Address conversion using AI",
-      "Automatic Google Sheets logging",
-      "Automated confirmations",
+      "Licence login bound to a single Telegram chat ID",
+      "Three-sheet authorisation model with per-run audit logging",
+      "OCR of coordinates stamped on installation photos",
+      "Bounding-box check that coordinates fall inside the Philippines",
+      "Reverse geocoding via OpenStreetMap to confirm the city",
+      "Rejects submissions where location contradicts the typed city",
+      "City alias table normalising ~100 spellings and abbreviations",
+      "Proof filed to Drive, row appended to Sheets, result sent back",
     ],
 
     images: [
@@ -225,21 +225,25 @@ const projects = [
     role: "Workflow Automation Engineer",
 
     description:
-      "Developed an automation workflow that validates licenses, records transactions, stores data in Google Sheets, and provides automated Telegram confirmations.",
+      "A Telegram reporting bot for GCash field teams. It parses free-text captions into 20+ structured fields, normalising messy human input — merchant area inferred from city against a national lookup, transaction types and freebie names mapped from dozens of spelling variants. Parsed entries are held in workflow state and shown back to the submitter for an APPROVE reply before anything is written, so bad extractions are caught by a human rather than filed.",
 
     technologies: [
       "n8n",
       "Telegram Bot API",
       "Google Sheets",
-      "HTTP Requests",
-      "JSON",
+      "Google Drive",
+      "JavaScript (Code nodes)",
+      "Workflow State",
+      "Regex Parsing",
     ],
 
     achievements: [
-      "License validation",
-      "Telegram automation",
-      "Google Sheets logging",
-      "Automated confirmations",
+      "Caption parser extracting 20+ fields from free text",
+      "Human-in-the-loop approval before any write",
+      "Merchant area inferred from city across all PH regions",
+      "Fuzzy normalisation of transaction types and freebie names",
+      "Multi-transaction entries handled in one submission",
+      "Licence login and authorisation shared with the Buy Load bot",
     ],
 
     images: [

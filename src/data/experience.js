@@ -99,13 +99,13 @@ const experience = [
     duration: "2026 – Present",
 
     description:
-      "Developed intelligent workflow automation systems using n8n integrated with Telegram, OCR, OpenAI API and Google Sheets to automate business processes.",
+      "Developed intelligent workflow automation systems using n8n integrated with Telegram, Facebook Messenger, OCR, LLM agents and Google Workspace to automate business processes.",
 
     achievements: [
       "Built GCash Buy Load Automation",
       "Telegram Bot Integration",
       "OCR Image Processing",
-      "OpenAI API Integration",
+      "LangChain Agent Integration",
       "Google Sheets Automation",
       "License Validation System",
     ],
