@@ -154,7 +154,7 @@ function Navbar() {
         {isOpen && (
           <div
             id="mobile-menu"
-            className="lg:hidden border-t border-line px-3 py-3"
+            className="menu-in lg:hidden border-t border-line px-3 py-3"
           >
             <div className="flex flex-col gap-1">
               {navLinks.map((link) => (

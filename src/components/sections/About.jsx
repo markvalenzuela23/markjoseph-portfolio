@@ -1,4 +1,6 @@
 import SectionHeading from "../common/SectionHeading";
+import CountUp from "../common/CountUp";
+import useReveal from "../../hooks/useReveal";
 
 // Every figure here is defensible in an interview.
 const stats = [
@@ -9,6 +11,9 @@ const stats = [
 ];
 
 function About() {
+  const copyRef = useReveal();
+  const statsRef = useReveal({ stagger: true });
+
   return (
     <section id="about" className="py-20 md:py-28 scroll-mt-24">
       <div className="max-w-6xl mx-auto px-6 lg:px-10">
@@ -21,7 +26,7 @@ function About() {
               title="Automating the work people shouldn't be doing by hand"
             />
 
-            <p className="mt-6 text-[17px] leading-[1.7] text-muted">
+            <p ref={copyRef} className="mt-6 text-[17px] leading-[1.7] text-muted">
               I build workflow automations that take repetitive manual
               processes off people's plates — n8n workflows wired into LLMs,
               Telegram, Facebook Messenger, OCR, and Google Sheets. The chatbot
@@ -38,15 +43,16 @@ function About() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div ref={statsRef} className="grid grid-cols-2 gap-4">
             {stats.map((stat) => (
               <div
                 key={stat.label}
                 className="rounded-2xl border border-line bg-surface p-6 md:p-7"
               >
-                <div className="font-display font-bold text-[34px] md:text-[40px] leading-none tracking-[-0.03em] text-accent">
-                  {stat.value}
-                </div>
+                <CountUp
+                  value={stat.value}
+                  className="block font-display font-bold text-[34px] md:text-[40px] leading-none tracking-[-0.03em] text-accent tabular-nums"
+                />
                 <div className="mt-3 text-sm leading-[1.5] text-muted">
                   {stat.label}
                 </div>

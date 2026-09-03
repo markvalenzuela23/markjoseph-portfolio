@@ -1,10 +1,13 @@
+import useReveal from "../../hooks/useReveal";
+
 // One place that owns the section header treatment, so every section gets the
-// same eyebrow, heading size and lead measure.
+// same eyebrow, heading size, lead measure — and the same scroll reveal.
 function SectionHeading({ eyebrow, title, children, align = "left" }) {
   const centered = align === "center";
+  const ref = useReveal();
 
   return (
-    <div className={centered ? "text-center" : ""}>
+    <div ref={ref} className={centered ? "text-center" : ""}>
 
       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
         {eyebrow}

@@ -1,5 +1,6 @@
 import profile from "../../data/profile";
 import SectionHeading from "../common/SectionHeading";
+import useReveal from "../../hooks/useReveal";
 import {
   FaEnvelope,
   FaGithub,
@@ -38,6 +39,8 @@ const channels = [
 ];
 
 function Contact() {
+  const cardsRef = useReveal({ stagger: true });
+
   return (
     <section id="contact" className="py-20 md:py-28 scroll-mt-24">
       <div className="max-w-4xl mx-auto px-6 lg:px-10">
@@ -52,7 +55,7 @@ function Contact() {
           in touch.
         </SectionHeading>
 
-        <div className="grid sm:grid-cols-2 gap-4 mt-12">
+        <div ref={cardsRef} className="grid sm:grid-cols-2 gap-4 mt-12">
 
           {channels.map(({ key, Icon, label, value, href, external }) => (
             <a

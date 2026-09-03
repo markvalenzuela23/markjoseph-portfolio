@@ -1,4 +1,5 @@
 import SectionHeading from "../common/SectionHeading";
+import useReveal from "../../hooks/useReveal";
 
 // Ordered by what the portfolio leads with: AI automation and AI-assisted
 // development first, then the infrastructure skills that support them.
@@ -109,6 +110,8 @@ const skillGroups = [
 ];
 
 function Skills() {
+  const gridRef = useReveal({ stagger: true });
+
   return (
     <section id="skills" className="py-20 md:py-28 scroll-mt-24">
       <div className="max-w-6xl mx-auto px-6 lg:px-10">
@@ -118,7 +121,7 @@ function Skills() {
           agents, and run the servers underneath it all.
         </SectionHeading>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
+        <div ref={gridRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
 
           {skillGroups.map((group) => (
             <div

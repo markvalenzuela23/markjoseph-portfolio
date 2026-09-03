@@ -2,6 +2,8 @@ import { useCallback, useEffect, useState } from "react";
 import { FaCode, FaDownload } from "react-icons/fa";
 import projects from "../../data/projects";
 import SectionHeading from "../common/SectionHeading";
+import CountUp from "../common/CountUp";
+import useReveal from "../../hooks/useReveal";
 
 // AI Chatbot
 import chatbotWorkflow from "../../assets/projects/ai-chatbot-jieunshideout/ai-chatbot-jieunshideout-workflow.webp";
@@ -181,6 +183,7 @@ function Achievements({ items }) {
 function Projects() {
   const [lightboxImage, setLightboxImage] = useState(null);
   const closeLightbox = useCallback(() => setLightboxImage(null), []);
+  const listRef = useReveal({ stagger: true, threshold: 0.04 });
 
   return (
     <section id="projects" className="py-20 md:py-28 scroll-mt-24">
@@ -195,7 +198,7 @@ function Projects() {
           screenshot to view it full size.
         </SectionHeading>
 
-        <div className="flex flex-col gap-6 mt-12">
+        <div ref={listRef} className="flex flex-col gap-6 mt-12">
 
           {projects.map((project) => {
             const cover = project.images?.length
@@ -255,9 +258,10 @@ function Projects() {
                             key={metric.label}
                             className="rounded-xl bg-sunk p-4"
                           >
-                            <div className="font-display font-bold text-[24px] leading-none tracking-[-0.02em] text-accent">
-                              {metric.value}
-                            </div>
+                            <CountUp
+                              value={metric.value}
+                              className="block font-display font-bold text-[24px] leading-none tracking-[-0.02em] text-accent tabular-nums"
+                            />
                             <div className="text-[12.5px] text-muted mt-1.5 leading-[1.4]">
                               {metric.label}
                             </div>

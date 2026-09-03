@@ -1,4 +1,5 @@
 import SectionHeading from "../common/SectionHeading";
+import useReveal from "../../hooks/useReveal";
 import {
   FaImage,
   FaCodeBranch,
@@ -42,6 +43,8 @@ const principles = [
 ];
 
 function Method() {
+  const gridRef = useReveal({ stagger: true });
+
   return (
     <section id="method" className="py-20 md:py-28 scroll-mt-24">
       <div className="max-w-6xl mx-auto px-6 lg:px-10">
@@ -58,7 +61,7 @@ function Method() {
           entirely compatible.
         </SectionHeading>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
+        <div ref={gridRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
 
           {principles.map(({ icon: Icon, title, body }) => (
 

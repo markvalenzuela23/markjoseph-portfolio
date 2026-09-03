@@ -1,7 +1,11 @@
 import experience from "../../data/experience";
 import SectionHeading from "../common/SectionHeading";
+import useReveal from "../../hooks/useReveal";
 
 function Experience() {
+  const timelineRef = useReveal({ stagger: true, threshold: 0.04 });
+  const educationRef = useReveal();
+
   return (
     <section id="experience" className="py-20 md:py-28 scroll-mt-24">
       <div className="max-w-4xl mx-auto px-6 lg:px-10">
@@ -24,7 +28,7 @@ function Experience() {
             aria-hidden="true"
           />
 
-          <div className="flex flex-col gap-5">
+          <div ref={timelineRef} className="flex flex-col gap-5">
 
             {experience.map((job) => (
 
@@ -92,7 +96,7 @@ function Experience() {
 
         {/* EDUCATION */}
 
-        <div className="mt-14 pt-10 border-t border-line">
+        <div ref={educationRef} className="mt-14 pt-10 border-t border-line">
 
           <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-subtle text-center">
             Education

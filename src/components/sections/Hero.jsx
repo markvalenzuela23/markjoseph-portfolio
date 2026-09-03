@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import profile from "../../data/profile";
 import profileImage from "../../assets/images/profile.webp";
 import SocialLinks from "../common/SocialLinks";
+import CountUp from "../common/CountUp";
 
 const stats = [
   { value: "6", label: "parallel Claude Code sessions" },
@@ -34,27 +35,31 @@ function Hero() {
 
           <div className="lg:col-span-7">
 
-            <div className="inline-flex items-center gap-2 rounded-full border border-ok-line bg-ok-soft px-3 py-1.5 text-[13px] font-semibold text-ok">
+            <div className="rise-in inline-flex items-center gap-2 rounded-full border border-ok-line bg-ok-soft px-3 py-1.5 text-[13px] font-semibold text-ok">
               <span className="h-[7px] w-[7px] rounded-full bg-ok" aria-hidden="true" />
               Open to remote work
             </div>
 
-            <h1 className="font-display font-bold text-[40px] sm:text-[52px] lg:text-[60px] leading-[1.06] tracking-[-0.032em] mt-5 text-balance">
+            <h1 className="rise-in rise-delay-1 font-display font-bold text-[40px] sm:text-[52px] lg:text-[60px] leading-[1.06] tracking-[-0.032em] mt-5 text-balance">
               Automations that replace the manual work
             </h1>
 
             <p
               aria-live="polite"
-              className="mt-4 text-lg md:text-xl font-semibold text-accent h-8"
+              className="rise-in rise-delay-2 mt-4 text-lg md:text-xl font-semibold text-accent h-8"
             >
-              {profile.headline[currentTitle]}
+              {/* Keyed so each title remounts and replays the fade, rather
+                  than the text blinking from one string to the next. */}
+              <span key={currentTitle} className="headline-swap inline-block">
+                {profile.headline[currentTitle]}
+              </span>
             </p>
 
-            <p className="mt-5 text-[17px] md:text-[18px] leading-[1.65] text-muted max-w-xl">
+            <p className="rise-in rise-delay-3 mt-5 text-[17px] md:text-[18px] leading-[1.65] text-muted max-w-xl">
               {profile.shortDescription}
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="rise-in rise-delay-4 mt-8 flex flex-wrap gap-3">
               <a
                 href="#projects"
                 className="rounded-[10px] bg-accent px-6 py-3.5 text-[15px] font-semibold text-accent-ink shadow-[var(--shadow-accent)] hover:opacity-90 transition"
@@ -70,7 +75,7 @@ function Hero() {
               </a>
             </div>
 
-            <div className="mt-8">
+            <div className="rise-in rise-delay-5 mt-8">
               <SocialLinks />
             </div>
 
@@ -80,7 +85,7 @@ function Hero() {
 
           <div className="lg:col-span-5">
 
-            <div className="flex items-center gap-4">
+            <div className="rise-in rise-delay-2 flex items-center gap-4">
               <img
                 src={profileImage}
                 alt="Mark Joseph Valenzuela"
@@ -98,15 +103,16 @@ function Hero() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-3.5 mt-6">
+            <div className="rise-in rise-delay-3 grid grid-cols-2 gap-3.5 mt-6">
               {stats.map((stat) => (
                 <div
                   key={stat.label}
                   className="rounded-[14px] border border-line bg-surface p-5"
                 >
-                  <div className="font-display font-bold text-[28px] leading-none tracking-[-0.02em] text-accent">
-                    {stat.value}
-                  </div>
+                  <CountUp
+                    value={stat.value}
+                    className="block font-display font-bold text-[28px] leading-none tracking-[-0.02em] text-accent tabular-nums"
+                  />
                   <div className="mt-2 text-[13px] leading-[1.45] text-muted">
                     {stat.label}
                   </div>
@@ -114,7 +120,7 @@ function Hero() {
               ))}
             </div>
 
-            <div className="mt-4 flex flex-wrap gap-2">
+            <div className="rise-in rise-delay-4 mt-4 flex flex-wrap gap-2">
               {profile.quickSkills.map((skill) => (
                 <span
                   key={skill}
