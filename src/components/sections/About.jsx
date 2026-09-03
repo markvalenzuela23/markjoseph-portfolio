@@ -1,5 +1,3 @@
-import profile from "../../data/profile";
-
 function About() {
   return (
     <section

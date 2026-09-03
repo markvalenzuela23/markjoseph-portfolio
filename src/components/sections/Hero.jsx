@@ -10,6 +10,29 @@ import {
   FaRobot,
 } from "react-icons/fa";
 
+const expertise = [
+  {
+    icon: FaServer,
+    title: "Enterprise IT",
+    items: ["Windows Server", "VMware ESXi", "Active Directory"],
+  },
+  {
+    icon: FaRobot,
+    title: "Workflow Automation",
+    items: ["n8n", "OpenAI API", "Telegram Bot"],
+  },
+  {
+    icon: FaNetworkWired,
+    title: "Network Infrastructure",
+    items: ["Dual ISP", "FortiGate", "Structured Cabling"],
+  },
+  {
+    icon: FaTools,
+    title: "Technical Support",
+    items: ["Windows Support", "Remote Assistance", "Troubleshooting"],
+  },
+];
+
 function Hero() {
   const [currentTitle, setCurrentTitle] = useState(0);
 
@@ -59,90 +82,52 @@ function Hero() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-6">
 
-  <div className="rounded-xl border border-slate-800 bg-slate-900/70 p-5 hover:border-blue-500 hover:-translate-y-1 transition-all">
+              {expertise.map(({ icon: Icon, title, items }) => (
 
-    <FaServer className="text-3xl text-blue-400" />
+                <div
+                  key={title}
+                  className="rounded-xl border border-slate-800 bg-slate-900/70 p-5 hover:border-blue-500 hover:-translate-y-1 transition-all"
+                >
 
-    <h3 className="mt-4 text-lg font-semibold">
-      Enterprise IT
-    </h3>
+                  <Icon className="text-3xl text-blue-400" />
 
-    <p className="mt-2 text-sm text-slate-400 leading-6">
-      Windows Server<br />
-      VMware ESXi<br />
-      Active Directory
-    </p>
+                  <h4 className="mt-4 text-lg font-semibold">
+                    {title}
+                  </h4>
 
-  </div>
+                  <p className="mt-2 text-sm text-slate-400 leading-6">
+                    {items.map((item, index) => (
+                      <span key={item}>
+                        {index > 0 && <br />}
+                        {item}
+                      </span>
+                    ))}
+                  </p>
 
-  <div className="rounded-xl border border-slate-800 bg-slate-900/70 p-5 hover:border-blue-500 hover:-translate-y-1 transition-all">
+                </div>
 
-    <FaRobot className="text-3xl text-blue-400" />
+              ))}
 
-    <h3 className="mt-4 text-lg font-semibold">
-      Workflow Automation
-    </h3>
-
-    <p className="mt-2 text-sm text-slate-400 leading-6">
-      n8n<br />
-      OpenAI API<br />
-      Telegram Bot
-    </p>
-
-  </div>
-
-  <div className="rounded-xl border border-slate-800 bg-slate-900/70 p-5 hover:border-blue-500 hover:-translate-y-1 transition-all">
-
-    <FaNetworkWired className="text-3xl text-blue-400" />
-
-    <h3 className="mt-4 text-lg font-semibold">
-      Network Infrastructure
-    </h3>
-
-    <p className="mt-2 text-sm text-slate-400 leading-6">
-      Dual ISP<br />
-      FortiGate<br />
-      Structured Cabling
-    </p>
-
-  </div>
-
-  <div className="rounded-xl border border-slate-800 bg-slate-900/70 p-5 hover:border-blue-500 hover:-translate-y-1 transition-all">
-
-    <FaTools className="text-3xl text-blue-400" />
-
-    <h3 className="mt-4 text-lg font-semibold">
-      Technical Support
-    </h3>
-
-    <p className="mt-2 text-sm text-slate-400 leading-6">
-      Windows Support<br />
-      Remote Assistance<br />
-      Troubleshooting
-    </p>
-
-  </div>
-
-</div>
+            </div>
 
             {/* ================= BUTTONS ================= */}
 
             <div className="mt-10 flex flex-wrap gap-4">
 
               <a
-  href="#projects"
-  className="bg-blue-600 hover:bg-blue-700 transition px-6 py-3 rounded-lg font-semibold shadow-lg"
->
-  {profile.buttons.projects}
-</a>
+                href="#projects"
+                className="bg-blue-600 hover:bg-blue-700 transition px-6 py-3 rounded-lg font-semibold shadow-lg"
+              >
+                {profile.buttons.projects}
+              </a>
 
               <a
-  href="/resume.pdf"
-  download
-  className="border border-slate-600 hover:border-white hover:bg-slate-800 transition px-6 py-3 rounded-lg"
->
-  {profile.buttons.resume}
-</a>
+                href={profile.resumeUrl}
+                download
+                className="border border-slate-600 hover:border-white hover:bg-slate-800 transition px-6 py-3 rounded-lg"
+              >
+                {profile.buttons.resume}
+              </a>
 
             </div>
 
@@ -168,85 +153,82 @@ function Hero() {
 
           {/* ================= RIGHT ================= */}
 
-<div className="lg:w-1/2 flex justify-center">
+          <div className="lg:w-1/2 flex justify-center">
 
-  <div className="relative">
+            <div className="relative">
 
+              {/* Blue Glow */}
 
-    {/* Blue Glow */}
+              <div className="absolute inset-0 bg-blue-500/20 blur-3xl rounded-3xl"></div>
 
-    <div className="absolute inset-0 bg-blue-500/20 blur-3xl rounded-3xl"></div>
+              {/* Card */}
 
-    {/* Card */}
+              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-2xl p-8 shadow-2xl">
 
-    <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-2xl p-8 shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none"></div>
 
-    <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none"></div>
+                {/* Available */}
 
-      {/* Available */}
+                <div className="absolute -top-5 left-1/2 -translate-x-1/2">
 
-      <div className="absolute -top-5 left-1/2 -translate-x-1/2">
+                  <span className="bg-green-500 text-white text-sm px-4 py-2 rounded-full font-semibold shadow-lg">
+                    ● Available for Hire
+                  </span>
 
-        <span className="bg-green-500 text-white text-sm px-4 py-2 rounded-full font-semibold shadow-lg">
+                </div>
 
-          ● Available for Hire
+                {/* Photo */}
 
-        </span>
+                <div className="flex justify-center mt-4">
 
-      </div>
+                  <img
+                    src={profileImage}
+                    alt="Mark Joseph Valenzuela"
+                    className="w-72 h-72 rounded-full object-cover object-[center_20%] border-4 border-blue-500 shadow-[0_0_60px_rgba(59,130,246,0.35)] float-animation"
+                  />
 
-      {/* Photo */}
+                </div>
 
-      <div className="flex justify-center mt-4">
+                {/* Name */}
 
-        <img
-          src={profileImage}
-          alt="Mark Joseph Valenzuela"
-          className="w-72 h-72 rounded-full object-cover object-[center_20%] border-4 border-blue-500 shadow-[0_0_60px_rgba(59,130,246,0.35)] float-animation"
-        />
+                <div className="text-center mt-8">
 
-      </div>
+                  <h3 className="text-3xl font-bold">
+                    {profile.name}
+                  </h3>
 
-      {/* Name */}
+                  <p className="text-blue-400 mt-2 font-semibold">
+                    {profile.headline[0]}
+                  </p>
 
-      <div className="text-center mt-8">
+                  <p className="text-slate-400 text-sm mt-1">
+                    📍 {profile.location}
+                  </p>
 
-        <h3 className="text-3xl font-bold">
-  {profile.name}
-</h3>
+                </div>
 
-<p className="text-blue-400 mt-2 font-semibold">
-  {profile.headline[0]}
-</p>
+                {/* Skills */}
 
-<p className="text-slate-400 text-sm mt-1">
-  📍 {profile.location}
-</p>
+                <div className="grid grid-cols-2 gap-3 mt-8">
 
-      </div>
+                  {profile.quickSkills.map((skill) => (
 
-      {/* Skills */}
+                    <div
+                      key={skill}
+                      className="rounded-lg border border-slate-700 bg-slate-800/70 p-3 text-center text-sm font-medium hover:border-blue-500 transition"
+                    >
+                      {skill}
+                    </div>
 
-      <div className="grid grid-cols-2 gap-3 mt-8">
+                  ))}
 
-  {profile.quickSkills.map((skill) => (
+                </div>
 
-    <div
-      key={skill}
-      className="rounded-lg border border-slate-700 bg-slate-800/70 p-3 text-center text-sm font-medium hover:border-blue-500 transition"
-    >
-      {skill}
-    </div>
+              </div>
 
-  ))}
+            </div>
 
-</div>
-
-    </div>
-
-  </div>
-
-</div>
+          </div>
 
         </div>
 

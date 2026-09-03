@@ -29,14 +29,14 @@ function SocialLinks() {
       </a>
 
       <a
-        href={profile.social.email}
+        href={`mailto:${profile.social.email}`}
         className="hover:text-red-400 transition"
       >
         <FaEnvelope />
       </a>
 
       <a
-        href="/resume.pdf"
+        href={profile.resumeUrl}
         download
         className="hover:text-blue-400 transition"
       >

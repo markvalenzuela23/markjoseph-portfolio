@@ -25,10 +25,14 @@ const profile = {
   social: {
     github: "https://github.com/markvalenzuela23",
     linkedin:
-      "https://linkedin.com/in/mark-joseph-valenzuela-66b4b9314",
-    email: "mailto:mark.valenzuela1023@gmail.com",
+      "https://www.linkedin.com/in/mark-joseph-valenzuela-66b4b9314",
+    email: "mark.valenzuela1023@gmail.com",
     onlinejobs: "https://v2.onlinejobs.ph/jobseekers/info/4550304",
   },
+
+  // Resolved against Vite's base path so the link works both on the dev
+  // server and under the /markjoseph-portfolio/ subpath on GitHub Pages.
+  resumeUrl: `${import.meta.env.BASE_URL}resume.pdf`,
 
   buttons: {
     projects: "View Projects",

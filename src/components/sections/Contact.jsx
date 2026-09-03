@@ -1,9 +1,14 @@
+import profile from "../../data/profile";
 import {
   FaEnvelope,
   FaGithub,
   FaLinkedin,
   FaMapMarkerAlt,
 } from "react-icons/fa";
+
+// Strips the protocol and any leading "www." so cards show a readable handle
+// instead of the full URL.
+const displayUrl = (url) => url.replace(/^https?:\/\/(www\.)?/, "");
 
 function Contact() {
   return (
@@ -28,7 +33,7 @@ function Contact() {
           {/* Email */}
 
           <a
-            href="mailto:mark.valenzuela1023@gmail.com"
+            href={`mailto:${profile.social.email}`}
             className="bg-slate-950 border border-slate-800 rounded-xl p-6 hover:border-blue-500 transition"
           >
             <FaEnvelope className="text-3xl text-blue-400 mx-auto mb-4" />
@@ -37,8 +42,8 @@ function Contact() {
               Email
             </h3>
 
-            <p className="text-slate-400 mt-2">
-              mark.valenzuela1023@gmail.com
+            <p className="text-slate-400 mt-2 break-words">
+              {profile.social.email}
             </p>
 
           </a>
@@ -46,9 +51,9 @@ function Contact() {
           {/* GitHub */}
 
           <a
-            href="https://github.com/markvalenzuela23"
+            href={profile.social.github}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="bg-slate-950 border border-slate-800 rounded-xl p-6 hover:border-blue-500 transition"
           >
             <FaGithub className="text-3xl text-blue-400 mx-auto mb-4" />
@@ -57,8 +62,8 @@ function Contact() {
               GitHub
             </h3>
 
-            <p className="text-slate-400 mt-2">
-              github.com/markvalenzuela23
+            <p className="text-slate-400 mt-2 break-words">
+              {displayUrl(profile.social.github)}
             </p>
 
           </a>
@@ -66,7 +71,9 @@ function Contact() {
           {/* LinkedIn */}
 
           <a
-            href="#"
+            href={profile.social.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-slate-950 border border-slate-800 rounded-xl p-6 hover:border-blue-500 transition"
           >
             <FaLinkedin className="text-3xl text-blue-400 mx-auto mb-4" />
@@ -75,8 +82,8 @@ function Contact() {
               LinkedIn
             </h3>
 
-            <p className="text-slate-400 mt-2">
-              https://www.linkedin.com/in/mark-joseph-valenzuela-66b4b9314/?locale=en
+            <p className="text-slate-400 mt-2 break-words">
+              {displayUrl(profile.social.linkedin)}
             </p>
 
           </a>
@@ -92,7 +99,7 @@ function Contact() {
             </h3>
 
             <p className="text-slate-400 mt-2">
-              Quezon City, Philippines
+              {profile.location}
             </p>
 
           </div>
