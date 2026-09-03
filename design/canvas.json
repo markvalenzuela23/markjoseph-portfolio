@@ -1,0 +1,34 @@
+{
+  "pages": [
+    { "id": "page-1", "name": "Directions" },
+    { "id": "page-2", "name": "Day & Night" }
+  ],
+  "artboards": [
+    { "file": "Main.dc.html", "title": "Direction A — Technical Editorial", "x": 0, "y": 0, "w": 1440, "h": 1620, "page": "page-1" },
+    { "file": "DirectionB.dc.html", "title": "Direction B — Terminal", "x": 1560, "y": 0, "w": 1440, "h": 1620, "page": "page-1" },
+    { "file": "DirectionC.dc.html", "title": "Direction C — Soft Workspace", "x": 3120, "y": 0, "w": 1440, "h": 1620, "page": "page-1" },
+
+    { "file": "ThemesA.dc.html", "title": "A — day & night", "x": 0, "y": 0, "w": 1440, "h": 820, "page": "page-2" },
+    { "file": "ThemesB.dc.html", "title": "B — day & night", "x": 1560, "y": 0, "w": 1440, "h": 820, "page": "page-2" },
+    { "file": "ThemesC.dc.html", "title": "C — day & night", "x": 3120, "y": 0, "w": 1440, "h": 820, "page": "page-2" }
+  ],
+  "annotations": [
+    {
+      "id": "brief",
+      "x": 0,
+      "y": -190,
+      "w": 720,
+      "text": "Three directions for the portfolio redesign, each with a day and night mode (page 2).\n\nAll copy and every number is real — pulled from the live site and the Yapii work.\n\nPick one and I'll build it into the actual React site with a working theme toggle.",
+      "page": "page-1"
+    },
+    {
+      "id": "modes",
+      "x": 0,
+      "y": -190,
+      "w": 720,
+      "text": "Same three directions, light and dark stacked, with the reworked navbar in each.\n\nNav changes across all three: an active-section indicator, a theme toggle, and Résumé promoted from a plain text link to a real button.",
+      "page": "page-2"
+    }
+  ],
+  "launch": { "view": "canvas", "page": "page-1" }
+}

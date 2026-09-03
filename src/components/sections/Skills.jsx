@@ -108,37 +108,31 @@ const skillGroups = [
 
 function Skills() {
   return (
-    <section
-      id="skills"
-      className="bg-slate-950 text-white py-28 scroll-mt-24"
-    >
-      <div className="max-w-7xl mx-auto px-8">
+    <section id="skills" className="py-20 md:py-28 scroll-mt-24">
+      <div className="max-w-6xl mx-auto px-6 lg:px-10">
 
         <SectionHeading eyebrow="Toolkit" title="Skills">
           The stack I use to automate manual work, ship software with AI coding
           agents, and run the servers underneath it all.
         </SectionHeading>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
 
           {skillGroups.map((group) => (
             <div
               key={group.title}
-              className="bg-slate-900 rounded-2xl p-8 border border-slate-800"
+              className="rounded-2xl border border-line bg-surface p-6"
             >
-              <h3 className="text-lg font-semibold mb-6">
+              <h3 className="font-display font-bold text-[17px] tracking-tight mb-5">
                 {group.title}
               </h3>
 
-              {/* Flat, squared chips rather than pills — there are ~120 of
-                  these across the page, and pill styling made them read as
-                  buttons rather than as a list. */}
               <div className="flex flex-wrap gap-2">
 
                 {group.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="bg-slate-800/70 text-slate-300 px-3 py-1.5 rounded-md text-[13px]"
+                    className="rounded-md bg-sunk px-3 py-1.5 text-[13px] text-muted"
                   >
                     {skill}
                   </span>
@@ -147,9 +141,9 @@ function Skills() {
               </div>
 
               {group.secondary && (
-                <div className="mt-6 pt-5 border-t border-slate-800">
+                <div className="mt-5 pt-4 border-t border-line">
 
-                  <p className="text-xs uppercase tracking-[0.2em] text-slate-500 mb-3">
+                  <p className="text-[11px] uppercase tracking-[0.16em] text-subtle mb-2.5">
                     Some exposure
                   </p>
 
@@ -158,7 +152,7 @@ function Skills() {
                     {group.secondary.map((skill) => (
                       <span
                         key={skill}
-                        className="border border-slate-700 text-slate-400 px-3 py-1.5 rounded-md text-[13px]"
+                        className="rounded-md border border-line px-3 py-1.5 text-[13px] text-subtle"
                       >
                         {skill}
                       </span>

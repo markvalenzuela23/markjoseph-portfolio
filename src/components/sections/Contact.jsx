@@ -11,100 +11,91 @@ import {
 // instead of the full URL.
 const displayUrl = (url) => url.replace(/^https?:\/\/(www\.)?/, "");
 
+const channels = [
+  {
+    key: "email",
+    Icon: FaEnvelope,
+    label: "Email",
+    value: profile.social.email,
+    href: `mailto:${profile.social.email}`,
+  },
+  {
+    key: "github",
+    Icon: FaGithub,
+    label: "GitHub",
+    value: displayUrl(profile.social.github),
+    href: profile.social.github,
+    external: true,
+  },
+  {
+    key: "linkedin",
+    Icon: FaLinkedin,
+    label: "LinkedIn",
+    value: displayUrl(profile.social.linkedin),
+    href: profile.social.linkedin,
+    external: true,
+  },
+];
+
 function Contact() {
   return (
-    <section
-      id="contact"
-      className="bg-slate-950 text-white py-28 scroll-mt-24"
-    >
-      <div className="max-w-5xl mx-auto px-8 text-center">
+    <section id="contact" className="py-20 md:py-28 scroll-mt-24">
+      <div className="max-w-4xl mx-auto px-6 lg:px-10">
 
         <SectionHeading
           eyebrow="Get In Touch"
-          title="Let's Work Together"
+          title="Let's work together"
           align="center"
         >
-          I'm open to remote work in AI automation, AI-assisted development,
-          and IT infrastructure. If you think I'd be a good fit for your team,
-          get in touch.
+          I'm open to remote work in AI automation, AI-assisted development, and
+          IT infrastructure. If you think I'd be a good fit for your team, get
+          in touch.
         </SectionHeading>
 
-        <div className="grid md:grid-cols-2 gap-6 mt-14">
+        <div className="grid sm:grid-cols-2 gap-4 mt-12">
 
-          {/* Email */}
+          {channels.map(({ key, Icon, label, value, href, external }) => (
+            <a
+              key={key}
+              href={href}
+              {...(external
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
+              className="group rounded-2xl border border-line bg-surface p-6 hover:border-accent transition"
+            >
+              <span className="flex h-10 w-10 items-center justify-center rounded-[11px] bg-accent-soft">
+                <Icon className="text-[17px] text-accent" aria-hidden="true" />
+              </span>
 
-          <a
-            href={`mailto:${profile.social.email}`}
-            className="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-blue-500 transition"
-          >
-            <FaEnvelope className="text-3xl text-blue-400 mx-auto mb-4" />
+              <div className="font-display font-bold text-[16px] tracking-tight mt-4">
+                {label}
+              </div>
 
-            <h3 className="font-semibold">
-              Email
-            </h3>
+              <div className="text-[14px] text-muted mt-1 break-words">
+                {value}
+              </div>
+            </a>
+          ))}
 
-            <p className="text-slate-400 mt-2 break-words">
-              {profile.social.email}
-            </p>
+          {/* Not a link, so it deliberately carries no hover affordance. */}
+          <div className="rounded-2xl border border-line bg-sunk p-6">
+            <span className="flex h-10 w-10 items-center justify-center rounded-[11px] bg-surface">
+              <FaMapMarkerAlt className="text-[17px] text-subtle" aria-hidden="true" />
+            </span>
 
-          </a>
-
-          {/* GitHub */}
-
-          <a
-            href={profile.social.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-blue-500 transition"
-          >
-            <FaGithub className="text-3xl text-blue-400 mx-auto mb-4" />
-
-            <h3 className="font-semibold">
-              GitHub
-            </h3>
-
-            <p className="text-slate-400 mt-2 break-words">
-              {displayUrl(profile.social.github)}
-            </p>
-
-          </a>
-
-          {/* LinkedIn */}
-
-          <a
-            href={profile.social.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-blue-500 transition"
-          >
-            <FaLinkedin className="text-3xl text-blue-400 mx-auto mb-4" />
-
-            <h3 className="font-semibold">
-              LinkedIn
-            </h3>
-
-            <p className="text-slate-400 mt-2 break-words">
-              {displayUrl(profile.social.linkedin)}
-            </p>
-
-          </a>
-
-          {/* Location */}
-
-          <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
-
-            <FaMapMarkerAlt className="text-3xl text-blue-400 mx-auto mb-4" />
-
-            <h3 className="font-semibold">
+            <div className="font-display font-bold text-[16px] tracking-tight mt-4">
               Location
-            </h3>
+            </div>
 
-            <p className="text-slate-400 mt-2">
+            <div className="text-[14px] text-muted mt-1">
               {profile.location}
-            </p>
-
+            </div>
           </div>
 
+        </div>
+
+        <div className="mt-12 pt-8 border-t border-line text-center text-[13.5px] text-subtle">
+          Built with React, Vite and Tailwind &mdash; and a fair amount of Claude Code.
         </div>
 
       </div>

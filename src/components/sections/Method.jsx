@@ -43,15 +43,12 @@ const principles = [
 
 function Method() {
   return (
-    <section
-      id="method"
-      className="bg-slate-950 text-white py-28 scroll-mt-24"
-    >
-      <div className="max-w-7xl mx-auto px-8">
+    <section id="method" className="py-20 md:py-28 scroll-mt-24">
+      <div className="max-w-6xl mx-auto px-6 lg:px-10">
 
         <SectionHeading
           eyebrow="How I Work"
-          title="AI-Assisted Development, With Receipts"
+          title="AI-assisted development, with receipts"
         >
           I build with Claude Code, directed conversationally rather than from
           written specs — most recently six sessions in parallel to ship a
@@ -61,22 +58,24 @@ function Method() {
           entirely compatible.
         </SectionHeading>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
 
           {principles.map(({ icon: Icon, title, body }) => (
 
             <div
               key={title}
-              className="bg-slate-900 rounded-2xl p-8 border border-slate-800"
+              className="rounded-2xl border border-line bg-surface p-6"
             >
 
-              <Icon className="text-2xl text-slate-400" />
+              <span className="flex h-9 w-9 items-center justify-center rounded-[10px] bg-accent-soft">
+                <Icon className="text-[15px] text-accent" aria-hidden="true" />
+              </span>
 
-              <h3 className="text-xl font-bold mt-5">
+              <h3 className="font-display font-bold text-[17px] tracking-tight mt-4">
                 {title}
               </h3>
 
-              <p className="mt-3 text-slate-400 leading-7">
+              <p className="mt-2.5 text-[14.5px] leading-[1.6] text-muted">
                 {body}
               </p>
 

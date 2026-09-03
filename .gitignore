@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Design canvas: keep the artboard sources, ignore the seeded output, which is
+# a ~2.5 MB generated file carrying the whole canvas editor.
+design/*.html
+!design/*.dc.html
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

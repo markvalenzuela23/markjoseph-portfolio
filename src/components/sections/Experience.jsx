@@ -3,107 +3,114 @@ import SectionHeading from "../common/SectionHeading";
 
 function Experience() {
   return (
-    <section
-      id="experience"
-      className="bg-slate-900 text-white py-28 scroll-mt-24"
-    >
-      <div className="max-w-6xl mx-auto px-8">
+    <section id="experience" className="py-20 md:py-28 scroll-mt-24">
+      <div className="max-w-4xl mx-auto px-6 lg:px-10">
 
-        <div className="mb-20">
+        <SectionHeading
+          eyebrow="Career Journey"
+          title="Professional experience"
+          align="center"
+        >
+          My journey from enterprise infrastructure and systems administration
+          into workflow automation and AI-assisted product work.
+        </SectionHeading>
 
-          <SectionHeading
-            eyebrow="Career Journey"
-            title="Professional Experience"
-            align="center"
-          >
-            My journey from enterprise infrastructure and systems
-            administration into workflow automation and AI-assisted product
-            work.
-          </SectionHeading>
+        <div className="relative mt-14">
 
-        </div>
+          {/* Rail sits at the dot's centre: dots are 12px wide at left-0, so
+              their centre is 6px, and the 2px rail spans 5–7px. */}
+          <div
+            className="absolute left-[5px] top-2 bottom-2 w-0.5 bg-line"
+            aria-hidden="true"
+          />
 
-        <div className="relative">
+          <div className="flex flex-col gap-5">
 
-          {/* Vertical Line */}
+            {experience.map((job) => (
 
-          <div className="absolute left-[18px] top-0 bottom-0 w-1 bg-slate-800"></div>
+              <div key={job.id} className="relative pl-10">
 
-          {experience.map((job) => (
+                <span
+                  className="absolute left-0 top-7 h-3 w-3 rounded-full bg-accent ring-4 ring-canvas"
+                  aria-hidden="true"
+                />
 
-            <div
-              key={job.id}
-              className="relative pl-20 pb-16"
-            >
+                <div className="rounded-2xl border border-line bg-surface p-6 md:p-7">
 
-              {/* Timeline Dot */}
+                  <div className="text-[12px] font-semibold uppercase tracking-[0.12em] text-subtle">
+                    {job.duration}
+                  </div>
 
-              <div className="absolute left-0 top-2 w-10 h-10 rounded-full bg-blue-500 border-4 border-slate-900 shadow-[0_0_20px_rgba(59,130,246,0.7)]"></div>
+                  <h3 className="font-display font-bold text-[21px] md:text-[23px] tracking-tight mt-2">
+                    {job.position}
+                  </h3>
 
-              {/* Card */}
+                  <div className="text-[15px] text-accent font-medium mt-1">
+                    {job.company}
+                  </div>
 
-              <div className="bg-slate-950 border border-slate-800 rounded-2xl p-8">
+                  <p className="text-[15px] leading-[1.65] text-muted mt-4">
+                    {job.description}
+                  </p>
 
-                <span className="text-slate-400 font-semibold text-sm uppercase tracking-wider">
-                  {job.duration}
-                </span>
+                  <div className="grid sm:grid-cols-2 gap-2 mt-5">
 
-                <h3 className="text-3xl font-bold mt-2">
-                  {job.position}
-                </h3>
+                    {job.achievements.map((item) => (
+                      <div
+                        key={item}
+                        className="flex items-start gap-2 rounded-lg bg-sunk px-3 py-2.5 text-[13.5px] text-muted"
+                      >
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="var(--accent)"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="mt-0.5 shrink-0"
+                          aria-hidden="true"
+                        >
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        {item}
+                      </div>
+                    ))}
 
-                <p className="text-slate-300 mt-2 text-lg">
-                  {job.company}
-                </p>
-
-                <p className="text-slate-400 leading-8 mt-6">
-                  {job.description}
-                </p>
-
-                <div className="grid md:grid-cols-2 gap-3 mt-8">
-
-                  {job.achievements.map((item) => (
-
-                    <div
-                      key={item}
-                      className="bg-slate-800 rounded-lg px-4 py-3 text-slate-300"
-                    >
-                      ✔ {item}
-                    </div>
-
-                  ))}
+                  </div>
 
                 </div>
 
               </div>
 
-            </div>
+            ))}
 
-          ))}
+          </div>
 
         </div>
 
         {/* EDUCATION */}
 
-        <div className="mt-4 border-t border-slate-800 pt-14">
+        <div className="mt-14 pt-10 border-t border-line">
 
-          <h3 className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-400">
+          <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-subtle text-center">
             Education
           </h3>
 
-          <div className="bg-slate-950 border border-slate-800 rounded-2xl p-8 mt-8">
+          <div className="rounded-2xl border border-line bg-surface p-6 md:p-7 mt-6 text-center">
 
-            <span className="text-slate-400 font-semibold text-sm uppercase tracking-wider">
+            <div className="text-[12px] font-semibold uppercase tracking-[0.12em] text-subtle">
               June 2014 – May 2018
-            </span>
+            </div>
 
-            <h4 className="text-2xl font-bold mt-2">
+            <h4 className="font-display font-bold text-[21px] tracking-tight mt-2">
               BS Information Technology
             </h4>
 
-            <p className="text-slate-300 mt-2">
+            <div className="text-[15px] text-muted mt-1">
               STI College of Novaliches
-            </p>
+            </div>
 
           </div>
 

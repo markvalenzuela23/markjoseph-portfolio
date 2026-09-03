@@ -76,7 +76,7 @@ function Lightbox({ image, onClose }) {
       aria-modal="true"
       aria-label={image.alt}
       onClick={onClose}
-      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-slate-950/95 backdrop-blur-sm p-6 cursor-zoom-out"
+      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-canvas/95 backdrop-blur-sm p-6 cursor-zoom-out"
     >
       <img
         src={image.src}
@@ -84,10 +84,10 @@ function Lightbox({ image, onClose }) {
         width={image.width}
         height={image.height}
         onClick={(event) => event.stopPropagation()}
-        className="max-h-[85vh] w-auto max-w-full rounded-xl border border-slate-700 object-contain cursor-default"
+        className="max-h-[85vh] w-auto max-w-full rounded-xl border border-line object-contain cursor-default shadow-[var(--shadow-md)]"
       />
 
-      <p className="mt-4 max-w-2xl text-center text-sm text-slate-400">
+      <p className="mt-4 max-w-2xl text-center text-sm text-muted">
         {image.alt}
       </p>
 
@@ -95,9 +95,11 @@ function Lightbox({ image, onClose }) {
         type="button"
         onClick={onClose}
         aria-label="Close image"
-        className="absolute top-6 right-6 text-4xl leading-none text-slate-400 hover:text-white transition"
+        className="absolute top-6 right-6 rounded-lg border border-line bg-surface p-2.5 text-muted hover:text-ink transition"
       >
-        ×
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+          <path d="M18 6L6 18M6 6l12 12" />
+        </svg>
       </button>
     </div>
   );
@@ -112,13 +114,12 @@ function ProjectLinks({ project }) {
   const href = `${import.meta.env.BASE_URL}workflows/${project.workflowFile}`;
 
   return (
-    <div className="flex flex-wrap gap-3 mt-8">
-
+    <div className="flex flex-wrap gap-2.5 mt-6">
       <a
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 rounded-lg border border-slate-700 px-4 py-2.5 text-sm font-medium hover:border-blue-500 hover:text-blue-400 transition"
+        className="inline-flex items-center gap-2 rounded-[10px] border border-line px-4 py-2.5 text-[13.5px] font-medium hover:border-accent hover:text-accent transition"
       >
         <FaCode aria-hidden="true" />
         View workflow JSON
@@ -127,38 +128,74 @@ function ProjectLinks({ project }) {
       <a
         href={href}
         download
-        className="inline-flex items-center gap-2 rounded-lg border border-slate-700 px-4 py-2.5 text-sm font-medium hover:border-blue-500 hover:text-blue-400 transition"
+        className="inline-flex items-center gap-2 rounded-[10px] border border-line px-4 py-2.5 text-[13.5px] font-medium hover:border-accent hover:text-accent transition"
       >
         <FaDownload aria-hidden="true" />
         Download
       </a>
-
     </div>
+  );
+}
+
+function Chips({ items }) {
+  return (
+    <div className="flex flex-wrap gap-2">
+      {items.map((item) => (
+        <span
+          key={item}
+          className="rounded-md bg-sunk px-3 py-1.5 text-[12.5px] text-muted"
+        >
+          {item}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function Achievements({ items }) {
+  return (
+    <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2 mt-4">
+      {items.map((item) => (
+        <li key={item} className="flex items-start gap-2 text-[14px] text-muted">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="var(--accent)"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="mt-1 shrink-0"
+            aria-hidden="true"
+          >
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+          {item}
+        </li>
+      ))}
+    </ul>
   );
 }
 
 function Projects() {
   const [lightboxImage, setLightboxImage] = useState(null);
-
   const closeLightbox = useCallback(() => setLightboxImage(null), []);
 
   return (
-    <section
-      id="projects"
-      className="bg-slate-900 text-white py-32 md:py-40 scroll-mt-24"
-    >
-      <div className="max-w-7xl mx-auto px-8">
+    <section id="projects" className="py-20 md:py-28 scroll-mt-24">
+      <div className="max-w-6xl mx-auto px-6 lg:px-10">
 
         <SectionHeading
           eyebrow="Selected Work"
-          title="Automations, Products & Infrastructure"
+          title="Automations, products & infrastructure"
         >
           Real automations and AI integrations built for live businesses,
           alongside the platform and infrastructure work behind them. Click any
           screenshot to view it full size.
         </SectionHeading>
 
-        <div className="space-y-12 mt-16">
+        <div className="flex flex-col gap-6 mt-12">
 
           {projects.map((project) => {
             const cover = project.images?.length
@@ -167,20 +204,15 @@ function Projects() {
 
             return project.featured ? (
 
-              <div
+              <article
                 key={project.id}
-                className="bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden"
+                className="overflow-hidden rounded-[20px] border border-line bg-surface"
               >
 
-                {/* Featured projects without screenshots run full width rather
-                    than leaving half the card empty. */}
                 <div className={cover ? "grid lg:grid-cols-2" : ""}>
 
-                  {/* LEFT IMAGE */}
-
                   {cover && (
-                    <div className="bg-slate-900">
-
+                    <div className="bg-sunk">
                       <img
                         src={cover.src}
                         alt={cover.alt}
@@ -189,119 +221,70 @@ function Projects() {
                         loading="lazy"
                         decoding="async"
                         onClick={() => setLightboxImage(cover)}
-                        className="w-full h-full object-cover cursor-zoom-in"
+                        className="h-full w-full object-cover cursor-zoom-in"
                       />
-
                     </div>
                   )}
 
-                  {/* RIGHT CONTENT */}
+                  <div className="p-7 md:p-9 flex flex-col justify-center">
 
-                  <div className="p-10 flex flex-col justify-center">
-
-                    <span className="w-fit bg-slate-800 text-slate-300 px-3 py-1.5 rounded-md text-xs uppercase tracking-[0.15em] font-semibold">
+                    <span className="w-fit rounded-md bg-accent-soft px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-accent">
                       Featured
                     </span>
 
-                    <h3 className="text-2xl md:text-3xl font-bold mt-6">
+                    <h3 className="font-display font-bold text-[24px] md:text-[28px] leading-tight tracking-[-0.02em] mt-4">
                       {project.title}
                     </h3>
 
-                    <p className="text-slate-300 mt-3 text-lg">
+                    <div className="text-[15px] font-medium text-muted mt-2">
                       {project.role}
-                    </p>
+                    </div>
 
-                    <p className="text-slate-500 mt-1">
+                    <div className="text-[14px] text-subtle mt-0.5">
                       {project.client}
-                    </p>
+                    </div>
 
-                    <p className="text-slate-300 leading-8 mt-8">
+                    <p className="text-[15px] leading-[1.7] text-muted mt-5">
                       {project.description}
                     </p>
 
-                    {/* METRICS */}
-
                     {project.metrics && (
-                      <div className="grid grid-cols-2 gap-4 mt-8">
-
+                      <div className="grid grid-cols-2 gap-3 mt-6">
                         {project.metrics.map((metric) => (
-
                           <div
                             key={metric.label}
-                            className="bg-slate-900 rounded-xl p-5"
+                            className="rounded-xl bg-sunk p-4"
                           >
-
-                            <p className="text-3xl font-bold text-blue-400">
+                            <div className="font-display font-bold text-[24px] leading-none tracking-[-0.02em] text-accent">
                               {metric.value}
-                            </p>
-
-                            <p className="text-slate-400 text-sm mt-1">
+                            </div>
+                            <div className="text-[12.5px] text-muted mt-1.5 leading-[1.4]">
                               {metric.label}
-                            </p>
-
+                            </div>
                           </div>
-
                         ))}
-
                       </div>
                     )}
 
-                    {/* TECHNOLOGIES */}
-
-                    <div className="flex flex-wrap gap-2 mt-8">
-
-                      {project.technologies.map((tech) => (
-
-                        <span
-                          key={tech}
-                          className="bg-slate-800/70 text-slate-300 px-3 py-1.5 rounded-md text-[13px]"
-                        >
-                          {tech}
-                        </span>
-
-                      ))}
-
+                    <div className="mt-6">
+                      <Chips items={project.technologies} />
                     </div>
-
-                    {/* WORKFLOW SOURCE */}
 
                     <ProjectLinks project={project} />
 
-                    {/* ACHIEVEMENTS */}
-
-                    <div className="mt-10">
-
-                      <h4 className="text-lg font-semibold mb-4">
-                        Key Contributions
+                    <div className="mt-7">
+                      <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-subtle">
+                        Key contributions
                       </h4>
-
-                      <ul className="grid md:grid-cols-2 gap-3">
-
-                        {project.achievements.map((item) => (
-
-                          <li
-                            key={item}
-                            className="text-slate-400"
-                          >
-                            ✔ {item}
-                          </li>
-
-                        ))}
-
-                      </ul>
-
+                      <Achievements items={project.achievements} />
                     </div>
 
                   </div>
 
                 </div>
 
-                {/* IMAGE GALLERY */}
-
                 {project.images?.length > 1 && (
-
-                  <div className="grid md:grid-cols-3 gap-6 p-8 border-t border-slate-800">
-
+                  <div className="grid sm:grid-cols-3 gap-4 p-5 border-t border-line">
                     {project.images.map((key) => {
                       const image = imageLibrary[key];
 
@@ -310,7 +293,7 @@ function Projects() {
                           key={key}
                           type="button"
                           onClick={() => setLightboxImage(image)}
-                          className="rounded-xl overflow-hidden border border-slate-700 cursor-zoom-in transition duration-300 hover:scale-105 hover:border-blue-500"
+                          className="overflow-hidden rounded-xl border border-line cursor-zoom-in hover:border-accent transition"
                         >
                           <img
                             src={image.src}
@@ -319,80 +302,53 @@ function Projects() {
                             height={image.height}
                             loading="lazy"
                             decoding="async"
-                            className="w-full h-full object-cover"
+                            className="h-full w-full object-cover"
                           />
                         </button>
                       );
                     })}
-
                   </div>
-
                 )}
 
-              </div>
+              </article>
 
             ) : (
 
-              <div
+              <article
                 key={project.id}
-                className="bg-slate-950 border border-slate-800 rounded-2xl p-8"
+                className="rounded-[20px] border border-line bg-surface p-7 md:p-8"
               >
 
-                <h3 className="text-2xl font-bold">
+                <h3 className="font-display font-bold text-[21px] tracking-[-0.02em]">
                   {project.title}
                 </h3>
 
-                <p className="text-slate-300 mt-2">
+                <div className="text-[14.5px] font-medium text-muted mt-1.5">
                   {project.role}
-                </p>
+                </div>
 
-                <p className="text-slate-500">
+                <div className="text-[13.5px] text-subtle mt-0.5">
                   {project.client}
-                </p>
+                </div>
 
-                <p className="text-slate-300 leading-8 mt-6">
+                <p className="text-[15px] leading-[1.7] text-muted mt-4">
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2 mt-8">
-
-                  {project.technologies.map((tech) => (
-
-                    <span
-                      key={tech}
-                      className="bg-slate-800/70 text-slate-300 px-3 py-1.5 rounded-md text-[13px]"
-                    >
-                      {tech}
-                    </span>
-
-                  ))}
-
+                <div className="mt-5">
+                  <Chips items={project.technologies} />
                 </div>
 
-                <div className="mt-8">
+                <ProjectLinks project={project} />
 
-                  <h4 className="text-lg font-semibold mb-3">
-                    Key Contributions
+                <div className="mt-6">
+                  <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-subtle">
+                    Key contributions
                   </h4>
-
-                  <ul className="grid md:grid-cols-2 gap-2">
-
-                    {project.achievements.map((item) => (
-
-                      <li
-                        key={item}
-                        className="text-slate-400"
-                      >
-                        ✔ {item}
-                      </li>
-
-                    ))}
-
-                  </ul>
-
+                  <Achievements items={project.achievements} />
                 </div>
 
-              </div>
+              </article>
 
             );
           })}
@@ -402,10 +358,7 @@ function Projects() {
       </div>
 
       {lightboxImage && (
-        <Lightbox
-          image={lightboxImage}
-          onClose={closeLightbox}
-        />
+        <Lightbox image={lightboxImage} onClose={closeLightbox} />
       )}
 
     </section>

@@ -6,42 +6,30 @@ import {
   FaFileDownload,
 } from "react-icons/fa";
 
+const links = [
+  { key: "github", href: profile.social.github, label: "GitHub", Icon: FaGithub, external: true },
+  { key: "linkedin", href: profile.social.linkedin, label: "LinkedIn", Icon: FaLinkedin, external: true },
+  { key: "email", href: `mailto:${profile.social.email}`, label: "Email", Icon: FaEnvelope },
+  { key: "resume", href: profile.resumeUrl, label: "Download résumé", Icon: FaFileDownload, download: true },
+];
+
 function SocialLinks() {
   return (
-    <div className="flex gap-6 text-3xl text-slate-400">
+    <div className="flex flex-wrap gap-2">
 
-      <a
-        href={profile.social.github}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hover:text-white transition"
-      >
-        <FaGithub />
-      </a>
-
-      <a
-        href={profile.social.linkedin}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hover:text-[#0A66C2] transition"
-      >
-        <FaLinkedin />
-      </a>
-
-      <a
-        href={`mailto:${profile.social.email}`}
-        className="hover:text-red-400 transition"
-      >
-        <FaEnvelope />
-      </a>
-
-      <a
-        href={profile.resumeUrl}
-        download
-        className="hover:text-blue-400 transition"
-      >
-        <FaFileDownload />
-      </a>
+      {links.map(({ key, href, label, Icon, external, download }) => (
+        <a
+          key={key}
+          href={href}
+          aria-label={label}
+          title={label}
+          {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+          {...(download ? { download: true } : {})}
+          className="flex h-10 w-10 items-center justify-center rounded-[10px] border border-line bg-surface text-muted hover:text-accent hover:border-accent transition"
+        >
+          <Icon className="text-lg" aria-hidden="true" />
+        </a>
+      ))}
 
     </div>
   );
