@@ -191,9 +191,9 @@ const projects = [
       "Telegram Bot API",
       "Google Sheets",
       "OCR",
-      "HTTP Requests",
+      "GPS Metadata Extraction",
+      "Reverse Geocoding",
       "Webhooks",
-      "JSON",
     ],
 
     achievements: [

@@ -83,6 +83,32 @@ function Experience() {
 
         </div>
 
+        {/* EDUCATION */}
+
+        <div className="mt-4 border-t border-slate-800 pt-14">
+
+          <h3 className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-400">
+            Education
+          </h3>
+
+          <div className="bg-slate-950 border border-slate-800 rounded-2xl p-8 mt-8">
+
+            <span className="text-slate-400 font-semibold text-sm uppercase tracking-wider">
+              June 2014 – May 2018
+            </span>
+
+            <h4 className="text-2xl font-bold mt-2">
+              BS Information Technology
+            </h4>
+
+            <p className="text-slate-300 mt-2">
+              STI College of Novaliches
+            </p>
+
+          </div>
+
+        </div>
+
       </div>
     </section>
   );
